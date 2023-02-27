@@ -1,4 +1,4 @@
 package at.ac.htlsteyr.tetris.Model;
 
-public class Shapes {
+public class Point {
 }
