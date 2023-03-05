@@ -1,5 +1,4 @@
 package at.ac.htlsteyr.tetris.Model;
 
-public class Field {
-
+public class Player {
 }
