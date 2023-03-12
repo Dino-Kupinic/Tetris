@@ -12,8 +12,11 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        final int WINDOW_WIDTH = 960;
+        final int WINDOW_HEIGHT = 720;
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 960, 720);
+        Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
         stage.setTitle("Tetris");
         stage.setResizable(false);
         stage.setScene(scene);
