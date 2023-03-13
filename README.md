@@ -5,3 +5,4 @@ Made by:
 - Samed Karaman
 - Max Wöss
 - Johannes Rosenauer
+- Jannick Angerer
