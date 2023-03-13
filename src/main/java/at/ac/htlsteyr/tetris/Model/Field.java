@@ -17,9 +17,11 @@ public class Field extends StackPane {
         this.xPosition = x;
         this.yPosition = y;
         fieldNode = new Rectangle(FIELD_SIZE, FIELD_SIZE);
-        fieldNode.setStroke(Color.RED);
 
-        getChildren().addAll(fieldNode);
+        fieldNode.setFill(Color.RED);
+        fieldNode.setVisible(true);
+
+        getChildren().add(fieldNode);
         setTranslateX(x*FIELD_SIZE);
         setTranslateY(y*FIELD_SIZE);
     }
