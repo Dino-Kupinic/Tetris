@@ -13,8 +13,8 @@ public class Tetromino {
 
     public Tetromino(ArrayList<Block> blockList) {
         for (Block b : blockList) {
-            int x = b.getX();
-            int y = b.getY();
+            int x = b.getBlockPoint().getX();
+            int y = b.getBlockPoint().getY();
             tetroGrid[x][y] = 1;
         }
     }
@@ -22,7 +22,7 @@ public class Tetromino {
     public void rotate(Movements move) {
         switch(move) {
             case RIGHT -> {
-                tetroGrid[][] = tetroGrid[]
+                //tetroGrid[][] = tetroGrid[]
             }
         }
     }
