@@ -27,5 +27,11 @@ public class Grid {
 
     }
 
+    public Field[][] getGrid() {
+        return grid;
+    }
 
+    public void setGrid(Field[][] grid) {
+        this.grid = grid;
+    }
 }
