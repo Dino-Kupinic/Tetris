@@ -3,17 +3,20 @@ package at.ac.htlsteyr.tetris.Controller;
 import at.ac.htlsteyr.tetris.Model.Grid;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class MainController {
     @FXML
     AnchorPane anchorField;
-    private static Pane root = new Pane();
 
-    public void initialize () {
+    private Pane root = new Pane();
+
+
+    public void initialize() {
+
+        root.setPrefSize(300, 600);
         Grid grid = new Grid(root);
-        grid.generateGrid();
+        root = grid.generateGrid();
         anchorField.getChildren().add(root);
     }
 
