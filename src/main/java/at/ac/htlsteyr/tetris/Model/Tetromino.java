@@ -20,33 +20,33 @@ public class Tetromino {
     }
 
     public void rotate(Movements move) {
-        switch(move) {
+        switch (move) {
             case RIGHT -> {
-                for(int i = 0; i < tetroGrid.length; i++) {
-                    for(int j = 0; j < tetroGrid[0].length; j++) {
-                        if(tetroGrid[i][j] == 1) {
+                for (int i = 0; i < tetroGrid.length; i++) {
+                    for (int j = 0; j < tetroGrid[0].length; j++) {
+                        if (tetroGrid[i][j] == 1) {
                             tetroGrid[i][j] = 0;
-                            tetroGrid[i][j+1] = 1;
+                            tetroGrid[i][j + 1] = 1;
                         }
                     }
                 }
             }
             case LEFT -> {
-                for(int i = 0; i < tetroGrid.length; i++) {
-                    for(int j = 0; j < tetroGrid[0].length; j++) {
-                        if(tetroGrid[i][j] == 1) {
+                for (int i = 0; i < tetroGrid.length; i++) {
+                    for (int j = 0; j < tetroGrid[0].length; j++) {
+                        if (tetroGrid[i][j] == 1) {
                             tetroGrid[i][j] = 0;
-                            tetroGrid[i][j-1] = 1;
+                            tetroGrid[i][j - 1] = 1;
                         }
                     }
                 }
             }
             case DOWN -> {
-                for(int i = 0; i < tetroGrid.length; i++) {
-                    for(int j = 0; j < tetroGrid[0].length; j++) {
-                        if(tetroGrid[i][j] == 1) {
+                for (int i = 0; i < tetroGrid.length; i++) {
+                    for (int j = 0; j < tetroGrid[0].length; j++) {
+                        if (tetroGrid[i][j] == 1) {
                             tetroGrid[i][j] = 0;
-                            tetroGrid[i+1][j] = 1;
+                            tetroGrid[i + 1][j] = 1;
                         }
                     }
                 }
