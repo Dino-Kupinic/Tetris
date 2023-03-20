@@ -3,37 +3,23 @@ package at.ac.htlsteyr.tetris.Model;
 import javafx.scene.paint.Color;
 
 public class Block {
-    Point blockPoints;
-
+    Point blockPoint;
     Color blockColor;
-
-    int x,y;
 
     public Block(Point p, Color c) {
         blockColor = c;
-        blockPoints = p;
+        blockPoint = p;
     }
 
-    public void initCoords () {
-        y = GridSize.rows;
-        x = GridSize.columns;
+    public Point getBlockPoint() {
+        return blockPoint;
     }
 
-    public Point getBlockcoords() {
-        return blockPoints;
+    public void setBlockPoint(Point blockPoint) {
+        this.blockPoint = blockPoint;
     }
 
-    public Color getBlockColor() {
-        return blockColor;
+    public void setBlockColor(Color blockColor) {
+        this.blockColor = blockColor;
     }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-
 }

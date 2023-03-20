@@ -28,5 +28,11 @@ public class Grid extends GridPane {
         return root;
     }
 
+    public Field[][] getGrid() {
+        return grid;
+    }
 
+    public void setGrid(Field[][] grid) {
+        this.grid = grid;
+    }
 }
