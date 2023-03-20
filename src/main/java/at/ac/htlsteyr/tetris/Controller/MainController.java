@@ -14,16 +14,15 @@ public class MainController {
     private static MainController instance;
 
     public void initialize () {
+        JSONhandler jsoNhandler = new JSONhandler();
+        jsoNhandler.writeToJSON("Samc", 33);
         Grid grid = new Grid(root);
         grid.generateGrid();
         anchorField.getChildren().add(root);
-
     }
 
     public MainController() {
         instance = this;
-        JSONhandler jsoNhandler = new JSONhandler();
-        jsoNhandler.writeToJSON("Samc", 33);
     }
 
     public static MainController getInstance() {
