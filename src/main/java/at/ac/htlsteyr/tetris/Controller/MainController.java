@@ -10,11 +10,23 @@ public class MainController {
     @FXML
     AnchorPane anchorField;
     private static Pane root = new Pane();
+    private static MainController instance;
 
     public void initialize () {
         Grid grid = new Grid(root);
         grid.generateGrid();
         anchorField.getChildren().add(root);
+    }
+
+    public MainController() {
+        instance = this;
+    }
+
+    public static MainController getInstance() {
+        if (instance == null) {
+            instance = new MainController();
+        }
+        return instance;
     }
 
 
