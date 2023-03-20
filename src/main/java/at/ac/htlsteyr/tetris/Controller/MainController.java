@@ -1,6 +1,7 @@
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.Grid;
+import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -16,10 +17,13 @@ public class MainController {
         Grid grid = new Grid(root);
         grid.generateGrid();
         anchorField.getChildren().add(root);
+
     }
 
     public MainController() {
         instance = this;
+        JSONhandler jsoNhandler = new JSONhandler();
+        jsoNhandler.writeToJSON("Samc", 33);
     }
 
     public static MainController getInstance() {
