@@ -18,6 +18,6 @@ public class JSONhandler {
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public void writeToJSON(String name, int highscore) {
-        String json = gson.toJson(new Player(name, highscore), Player.class);
+        //String json = gson.toJson(new Player(name, highscore), Player.class);
     }
 }
