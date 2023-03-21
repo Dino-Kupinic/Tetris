@@ -1,5 +1,6 @@
 package at.ac.htlsteyr.tetris;
 
+import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,9 @@ public class MainApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+
+        JSONhandler jsoNhandler = new JSONhandler();
+        jsoNhandler.writeToJSON("Samc", 33);
     }
 
     public static void main(String[] args) {

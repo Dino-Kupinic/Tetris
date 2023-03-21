@@ -13,9 +13,7 @@ public class MainController {
     private static Pane root = new Pane();
     private static MainController instance;
 
-    public void initialize () {
-        JSONhandler jsoNhandler = new JSONhandler();
-        jsoNhandler.writeToJSON("Samc", 33);
+    public void initialize() {
         Grid grid = new Grid(root);
         grid.generateGrid();
         anchorField.getChildren().add(root);
