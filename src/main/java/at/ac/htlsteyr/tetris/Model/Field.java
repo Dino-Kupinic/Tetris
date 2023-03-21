@@ -33,4 +33,7 @@ public class Field extends StackPane {
     }
 
 
+    public Rectangle getFieldNode() {
+        return fieldNode;
+    }
 }
