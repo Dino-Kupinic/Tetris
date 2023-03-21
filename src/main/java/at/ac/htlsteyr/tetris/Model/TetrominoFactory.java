@@ -12,7 +12,7 @@ public class TetrominoFactory {
             case SHAPE_I -> {
                 Color col = Color.BLUE;
                 return new Tetromino(new ArrayList<>(Arrays.asList(
-                        new Block(new Point(0, 1), col),
+                        new Block(new Point(1, 0), col),
                         new Block(new Point(1, 1), col),
                         new Block(new Point(1, 2), col),
                         new Block(new Point(1, 3), col)
