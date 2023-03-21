@@ -19,6 +19,10 @@ public class Tetromino {
         }
     }
 
+    public int[][] getTetroGrid() {
+        return tetroGrid;
+    }
+
     public void rotate(Movements move) {
         switch (move) {
             case RIGHT -> {
