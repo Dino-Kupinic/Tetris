@@ -15,5 +15,6 @@ public class JSONhandler {
         Gson gson = new Gson();
         Player p = new Player(name, highscore);
         String json = gson.toJson(p);
+        System.out.println(json);
     }
 }
