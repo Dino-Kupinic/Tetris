@@ -2,6 +2,9 @@ package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.Game;
 import at.ac.htlsteyr.tetris.Model.Grid;
+import at.ac.htlsteyr.tetris.Model.GridSize;
+import at.ac.htlsteyr.tetris.Model.Player;
+import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -14,14 +17,24 @@ public class MainController {
     private static MainController instance;
 
     public void initialize() {
+        // setup Pane
+        final int WIDTH = GridSize.width;
+        final int HEIGHT = GridSize.height;
         root = new Pane();
-        root.setPrefSize(300, 600);
+        root.setPrefSize(HEIGHT, WIDTH);
+
+        // init Grid
         grid = new Grid(root);
         root = grid.generateGrid();
         anchorField.getChildren().add(root);
 
+        // init Game
         Game game = new Game();
         game.createContent(grid);
+
+        // Test JSON
+        JSONhandler handler = new JSONhandler();
+        handler.writeToJSON("Dino", 1000);
     }
 
     public MainController() {
@@ -34,6 +47,4 @@ public class MainController {
         }
         return instance;
     }
-
-
 }
