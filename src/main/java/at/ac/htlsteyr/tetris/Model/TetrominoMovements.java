@@ -1,6 +1,6 @@
 package at.ac.htlsteyr.tetris.Model;
 
-public enum Movements {
+public enum TetrominoMovements {
     RIGHT,
     LEFT,
     DOWN,

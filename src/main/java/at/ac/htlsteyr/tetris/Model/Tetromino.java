@@ -23,7 +23,7 @@ public class Tetromino {
         return tetroGrid;
     }
 
-    public void rotate(Movements move) {
+    public void rotate(TetrominoMovements move) {
         switch (move) {
             case RIGHT -> {
                 for (int i = 0; i < tetroGrid.length; i++) {

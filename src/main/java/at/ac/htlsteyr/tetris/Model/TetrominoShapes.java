@@ -1,6 +1,6 @@
 package at.ac.htlsteyr.tetris.Model;
 
-public enum Shapes {
+public enum TetrominoShapes {
     SHAPE_I,
     SHAPE_L,
     SHAPE_J,

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TetrominoFactory {
-    public Tetromino createTetromino(Shapes shape) throws InvalidShapeException {
+    public Tetromino createTetromino(TetrominoShapes shape) throws InvalidShapeException {
         switch (shape) {
             case SHAPE_I -> {
                 Color col = Color.BLUE;

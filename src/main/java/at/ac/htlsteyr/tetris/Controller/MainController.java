@@ -3,7 +3,6 @@ package at.ac.htlsteyr.tetris.Controller;
 import at.ac.htlsteyr.tetris.Model.Game;
 import at.ac.htlsteyr.tetris.Model.Grid;
 import at.ac.htlsteyr.tetris.Model.GridSize;
-import at.ac.htlsteyr.tetris.Model.Player;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +34,7 @@ public class MainController {
         // Test JSON
         JSONhandler handler = new JSONhandler();
         handler.writeToJSON("Dino", 1000);
+        System.out.println(handler.getPlayerInfos("Wolfi"));
     }
 
     public MainController() {
