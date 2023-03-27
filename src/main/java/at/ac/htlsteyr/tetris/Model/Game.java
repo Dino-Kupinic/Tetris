@@ -16,14 +16,11 @@ public class Game {
             int MIN_NUM = 0;
             int randNumber = (int) (Math.random() * MAX_NUM + MIN_NUM);
             Shapes shape = null;
-            switch (randNumber) {
-                case 0 -> shape = Shapes.SHAPE_I;
-                case 1 -> shape = Shapes.SHAPE_L;
-                case 2 -> shape = Shapes.SHAPE_J;
-                case 3 -> shape = Shapes.SHAPE_T;
-                case 4 -> shape = Shapes.SHAPE_O;
-                case 5 -> shape = Shapes.SHAPE_S;
-                case 6 -> shape = Shapes.SHAPE_Z;
+
+            for (Shapes s : Shapes.values()) {
+                if (randNumber == s.ordinal()) {
+                    shape = s;
+                }
             }
 
             Tetromino tetro = tetroFac.createTetromino(Objects.requireNonNull(shape));
