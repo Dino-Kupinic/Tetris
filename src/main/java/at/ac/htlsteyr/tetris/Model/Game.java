@@ -12,17 +12,20 @@ public class Game {
 
         TetrominoFactory tetroFac = new TetrominoFactory();
         try {
-            int MAX_NUM = 7;
+            // generate random number
             int MIN_NUM = 0;
+            int MAX_NUM = Shapes.values().length;
             int randNumber = (int) (Math.random() * MAX_NUM + MIN_NUM);
-            Shapes shape = null;
 
+            // assign random number to corresponding Shape
+            Shapes shape = null;
             for (Shapes s : Shapes.values()) {
                 if (randNumber == s.ordinal()) {
                     shape = s;
                 }
             }
 
+            // create Tetromino and add to grid
             Tetromino tetro = tetroFac.createTetromino(Objects.requireNonNull(shape));
             int[][] tetroGrid = tetro.getTetroGrid();
 
