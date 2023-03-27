@@ -13,8 +13,8 @@ public class Tetromino {
 
     public Tetromino(ArrayList<Block> blockList) {
         for (Block b : blockList) {
-            int x = b.getBlockPoint().getX();
-            int y = b.getBlockPoint().getY();
+            int x = b.getBlockPoint().x();
+            int y = b.getBlockPoint().y();
             tetroGrid[x][y] = 1;
         }
     }
