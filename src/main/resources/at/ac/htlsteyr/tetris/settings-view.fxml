@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.ac.htlsteyr.tetris.SettingsView"
+            fx:controller="at.ac.htlsteyr.tetris.Controller.SettingsController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
