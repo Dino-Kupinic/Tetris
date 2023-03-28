@@ -4,6 +4,7 @@ import at.ac.htlsteyr.tetris.Model.Game;
 import at.ac.htlsteyr.tetris.Model.Grid;
 import at.ac.htlsteyr.tetris.Model.GridSize;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,13 +29,30 @@ public class MainController {
         anchorField.getChildren().add(root);
 
         // init Game
-        Game game = new Game();
-        game.createContent(grid);
+        Game game = new Game(grid);
+        game.createTetromino();
+        startGameLoop();
 
         // Test JSON
         JSONhandler handler = new JSONhandler();
-        handler.writeToJSON("Dino", 1000);
+        //handler.writeToJSON("Dino", 1000);
         System.out.println(handler.getPlayerInfos("Wolfi"));
+    }
+
+    public void startGameLoop() {
+        AnimationTimer animationTimer = new AnimationTimer() {
+            int count = 0;
+
+            @Override
+            public void handle(long l) {
+               count++;
+               if (count == 30) {
+                    Tetromino currentTetro = Game.getCurrentTetromino();
+
+               }
+            }
+        };
+        animationTimer.start();
     }
 
     public MainController() {
