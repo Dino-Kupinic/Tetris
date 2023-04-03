@@ -1,26 +1,21 @@
 package at.ac.htlsteyr.tetris.Model;
 
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class Field extends StackPane {
     private Rectangle fieldNode;
     private boolean containsBlock;
-    private int xPosition;
-    private int yPosition;
-    private Grid grid;
     private final int FIELD_SIZE = 30;
 
-    public Field(int x, int y) {
-        this.xPosition = x;
-        this.yPosition = y;
-        containsBlock = false;
+    private final Text debugText = new Text();
+
+    public Field(int x, int y, boolean containsTetrominoBlock) {
+        containsBlock = containsTetrominoBlock;
 
         fieldNode = new Rectangle(FIELD_SIZE, FIELD_SIZE);
-
         fieldNode.setFill(Color.WHITE);
         fieldNode.setStroke(Color.BLACK);
         fieldNode.setVisible(true);
@@ -28,10 +23,23 @@ public class Field extends StackPane {
         setTranslateX(x * FIELD_SIZE);
         setTranslateY(y * FIELD_SIZE);
 
-        this.getChildren().add(fieldNode);
+        updateDebugText();
 
+        this.getChildren().addAll(fieldNode, debugText);
     }
 
+    public void updateDebugText() {
+        if (containsBlock) {
+            debugText.setText("1");
+        } else {
+            debugText.setText("0");
+        }
+        System.out.println(containsBlock);
+    }
+
+    public void setContainsBlock(boolean bool) {
+        containsBlock = bool;
+    }
 
     public Rectangle getFieldNode() {
         return fieldNode;

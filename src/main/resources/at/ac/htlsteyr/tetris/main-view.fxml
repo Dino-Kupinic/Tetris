@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.htlsteyr.tetris.Controller.MainController">
    <children>
       <AnchorPane fx:id="anchorField" layoutX="330.0" layoutY="60.0" prefHeight="600.0" prefWidth="300.0" />
+      <Button fx:id="startButton" layoutX="445.0" layoutY="671.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="25.0" prefWidth="70.0" text="Start">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="scoreLabel" layoutX="44.0" layoutY="198.0" prefHeight="17.0" prefWidth="46.0" text="Score">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="settingsButton" layoutX="793.0" layoutY="56.0" mnemonicParsing="false" text="Settings">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="modeChoiceBox" layoutX="44.0" layoutY="74.0" prefHeight="35.0" prefWidth="150.0" />
+      <Button fx:id="helpButton" layoutX="890.0" layoutY="56.0" mnemonicParsing="false" text="?">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="modeLabel" layoutX="44.0" layoutY="44.0" prefHeight="25.0" prefWidth="150.0" text="Gamemode">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

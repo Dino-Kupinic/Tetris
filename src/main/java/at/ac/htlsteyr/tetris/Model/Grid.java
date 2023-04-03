@@ -20,7 +20,7 @@ public class Grid extends GridPane {
 
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
-                Field field = new Field(x, y);
+                Field field = new Field(x, y, false);
                 grid[x][y] = field;
                 root.getChildren().add(field);
             }

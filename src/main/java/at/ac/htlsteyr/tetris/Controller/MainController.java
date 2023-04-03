@@ -1,17 +1,28 @@
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.Game;
+import at.ac.htlsteyr.tetris.Model.Gamemode;
 import at.ac.htlsteyr.tetris.Model.Grid;
 import at.ac.htlsteyr.tetris.Model.GridSize;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class MainController {
-    @FXML
-    private AnchorPane anchorField;
+    // FXML Variables
+    public Button startButton;
+    public Label scoreLabel;
+    public Button settingsButton;
+    public ChoiceBox<String> modeChoiceBox;
+    public Button helpButton;
+    public Label modeLabel;
+    public AnchorPane anchorField;
+
     private Pane root;
     private Grid grid;
     private static MainController instance;
@@ -28,10 +39,7 @@ public class MainController {
         root = grid.generateGrid();
         anchorField.getChildren().add(root);
 
-        // init Game
-        Game game = new Game(grid);
-        game.createTetromino();
-        startGameLoop();
+        addDifficultyOptions();
 
         // Test JSON
         JSONhandler handler = new JSONhandler();
@@ -39,21 +47,23 @@ public class MainController {
         System.out.println(handler.getPlayerInfos("Wolfi"));
     }
 
-    public void startGameLoop() {
-        AnimationTimer animationTimer = new AnimationTimer() {
-            int count = 0;
-
-            @Override
-            public void handle(long l) {
-               count++;
-               if (count == 30) {
-                    Tetromino currentTetro = Game.getCurrentTetromino();
-
-               }
-            }
-        };
-        animationTimer.start();
+    @FXML
+    public void onStartClicked() {
+        // init Game
+        Game game = new Game(grid);
+        game.createTetromino();
+        game.startGameLoop();
     }
+
+    private void addDifficultyOptions() {
+        modeChoiceBox.getItems().addAll(
+                String.valueOf(Gamemode.NORMAL),
+                String.valueOf(Gamemode.TIMED),
+                String.valueOf(Gamemode.FREEPLAY)
+        );
+        modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
+    }
+
 
     public MainController() {
         instance = this;
