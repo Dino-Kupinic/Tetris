@@ -33,5 +33,6 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <TextArea layoutX="792.0" layoutY="111.0" prefHeight="200.0" prefWidth="150.0" text="DEVELOPMENT BUILD&#10;&#10;0 = !containsBlock&#10;1 = containsBlock&#10;GREY = TetroGrid&#10;COLOR = Block" />
    </children>
 </AnchorPane>

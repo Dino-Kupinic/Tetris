@@ -44,4 +44,8 @@ public class Field extends StackPane {
     public Rectangle getFieldNode() {
         return fieldNode;
     }
+
+    public boolean isContainsBlock() {
+        return containsBlock;
+    }
 }
