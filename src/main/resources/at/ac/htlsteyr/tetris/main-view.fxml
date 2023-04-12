@@ -1,38 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.htlsteyr.tetris.Controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.htlsteyr.tetris.Controller.MainController">
    <children>
-      <AnchorPane fx:id="anchorField" layoutX="330.0" layoutY="60.0" prefHeight="600.0" prefWidth="300.0" />
-      <Button fx:id="startButton" layoutX="445.0" layoutY="671.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="25.0" prefWidth="70.0" text="Start">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Label fx:id="scoreLabel" layoutX="44.0" layoutY="198.0" prefHeight="17.0" prefWidth="46.0" text="Score">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="settingsButton" layoutX="793.0" layoutY="56.0" mnemonicParsing="false" text="Settings">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <ChoiceBox fx:id="modeChoiceBox" layoutX="44.0" layoutY="74.0" prefHeight="35.0" prefWidth="150.0" />
-      <Button fx:id="helpButton" layoutX="890.0" layoutY="56.0" mnemonicParsing="false" text="?">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Label fx:id="modeLabel" layoutX="44.0" layoutY="44.0" prefHeight="25.0" prefWidth="150.0" text="Gamemode">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextArea layoutX="792.0" layoutY="111.0" prefHeight="200.0" prefWidth="150.0" text="DEVELOPMENT BUILD&#10;&#10;0 = !containsBlock&#10;1 = containsBlock&#10;GREY = TetroGrid&#10;COLOR = Block" />
+      <ImageView fitHeight="720.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.png" />
+         </image></ImageView>
+      <AnchorPane fx:id="anchorField" layoutX="325.0" layoutY="44.0" prefHeight="600.0" prefWidth="300.0" />
+      <ChoiceBox fx:id="modeChoiceBox" layoutX="14.0" layoutY="38.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextArea layoutX="793.0" layoutY="132.0" prefHeight="200.0" prefWidth="150.0" text="DEVELOPMENT BUILD&#10;&#10;0 = !containsBlock&#10;1 = containsBlock&#10;GREY = TetroGrid&#10;COLOR = Block" />
+      <ImageView fx:id="startButton" fitHeight="40.0" fitWidth="160.0" layoutX="395.0" layoutY="666.0" onMouseClicked="#onStartClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="200.0" layoutX="746.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="helpButton" fitHeight="40.0" fitWidth="40.0" layoutX="903.0" layoutY="666.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="scoreLabel" fitHeight="20.0" fitWidth="80.0" layoutX="10.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="modeLabel" fitHeight="20.0" fitWidth="120.0" layoutX="10.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

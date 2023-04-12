@@ -10,18 +10,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class MainController {
     // FXML Variables
-    public Button startButton;
-    public Label scoreLabel;
-    public Button settingsButton;
     public ChoiceBox<String> modeChoiceBox;
-    public Button helpButton;
-    public Label modeLabel;
     public AnchorPane anchorField;
+    public ImageView modeLabel;
+    public ImageView scoreLabel;
+    public ImageView helpButton;
+    public ImageView settingsButton;
+    public ImageView startButton;
 
     private Pane root;
     private Grid grid;
