@@ -2,6 +2,7 @@ package at.ac.htlsteyr.tetris.Model;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -47,5 +48,9 @@ public class Field extends StackPane {
 
     public boolean isContainsBlock() {
         return containsBlock;
+    }
+
+    public Paint getFieldNodeColor () {
+        return fieldNode.getFill();
     }
 }
