@@ -2,14 +2,13 @@ package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.*;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 
 import java.io.IOException;
 
@@ -28,8 +27,11 @@ public class MainController {
     private Grid grid;
     private static MainController instance;
     private static Timer timer;
+    private WindowManager windowManager;
 
     public void initialize() throws IOException {
+        windowManager = new WindowManager();
+
         // setup Pane
         final int WIDTH = GridSize.width;
         final int HEIGHT = GridSize.height;
@@ -55,6 +57,16 @@ public class MainController {
         Game game = new Game(grid, gamemode);
         game.createTetromino();
         game.startGameLoop();
+    }
+
+    @FXML
+    public void onSettingsClicked() throws IOException {
+        windowManager.createNewWindow("Settings", "settings-view.fxml", 400, 300, Modality.APPLICATION_MODAL,"styles-settings.css");
+    }
+
+    @FXML
+    public void onHelpClicked() throws IOException {
+        windowManager.createNewWindow("Help", "help-view.fxml", 300, 600, Modality.APPLICATION_MODAL,"styles-help.css");
     }
 
     public void setTimerLabel(String time) {
