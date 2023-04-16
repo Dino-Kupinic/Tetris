@@ -14,8 +14,8 @@
       <ChoiceBox fx:id="modeChoiceBox" layoutX="14.0" layoutY="38.0" prefHeight="36.0" prefWidth="160.0" />
       <TextArea layoutX="793.0" layoutY="132.0" prefHeight="200.0" prefWidth="150.0" text="DEVELOPMENT BUILD&#10;&#10;0 = !containsBlock&#10;1 = containsBlock&#10;GREY = TetroGrid&#10;COLOR = Block" />
       <ImageView fx:id="startButton" fitHeight="40.0" fitWidth="160.0" layoutX="395.0" layoutY="666.0" onMouseClicked="#onStartClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="200.0" layoutX="746.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="helpButton" fitHeight="40.0" fitWidth="40.0" layoutX="903.0" layoutY="666.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="settingsButton" fitHeight="40.0" fitWidth="200.0" layoutX="746.0" layoutY="38.0" onMouseClicked="#onSettingsClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="helpButton" fitHeight="40.0" fitWidth="40.0" layoutX="903.0" layoutY="666.0" onMouseClicked="#onHelpClicked" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="scoreLabel" fitHeight="20.0" fitWidth="80.0" layoutX="10.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="modeLabel" fitHeight="20.0" fitWidth="120.0" layoutX="10.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="timerLabel" layoutX="20.0" layoutY="336.0" />
