@@ -1,9 +1,6 @@
 package at.ac.htlsteyr.tetris.Controller;
 
-import at.ac.htlsteyr.tetris.Model.Game;
-import at.ac.htlsteyr.tetris.Model.Gamemode;
-import at.ac.htlsteyr.tetris.Model.Grid;
-import at.ac.htlsteyr.tetris.Model.GridSize;
+import at.ac.htlsteyr.tetris.Model.*;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -18,6 +15,7 @@ public class MainController {
     // FXML Variables
     public ChoiceBox<String> modeChoiceBox;
     public AnchorPane anchorField;
+    public Label timerLabel;
     public ImageView modeLabel;
     public ImageView scoreLabel;
     public ImageView helpButton;
@@ -27,6 +25,7 @@ public class MainController {
     private Pane root;
     private Grid grid;
     private static MainController instance;
+    private static Timer timer;
 
     public void initialize() {
         // setup Pane
@@ -56,6 +55,10 @@ public class MainController {
         game.startGameLoop();
     }
 
+    public void setTimerLabel(String time) {
+        timerLabel.setText(time);
+    }
+
     private void addDifficultyOptions() {
         modeChoiceBox.getItems().addAll(
                 String.valueOf(Gamemode.NORMAL),
@@ -64,7 +67,6 @@ public class MainController {
         );
         modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
     }
-
 
     public MainController() {
         instance = this;
