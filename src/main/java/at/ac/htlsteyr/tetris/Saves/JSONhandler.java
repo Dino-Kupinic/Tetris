@@ -132,7 +132,6 @@ public class JSONhandler {
 
             JsonArray jsonArray = gson.fromJson(sb.toString(), JsonArray.class);
 
-            System.out.println(jsonArray);
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonElement jsonElement = jsonArray.get(i);
                 JsonObject jsonObject = jsonElement.getAsJsonObject();

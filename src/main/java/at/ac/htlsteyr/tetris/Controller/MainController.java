@@ -46,9 +46,6 @@ public class MainController {
         // Test JSON
         JSONhandler handler = new JSONhandler();
         handler.checkIfJSONisValid();
-        handler.writeToJSON("Samc4", 69420);
-        System.out.println(handler.getPlayerInfos("Wolfi"));
-        handler.deletePlayerFromJSON("Samc3");
     }
 
     @FXML
