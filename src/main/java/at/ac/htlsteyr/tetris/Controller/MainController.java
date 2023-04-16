@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
+
 public class MainController {
     // FXML Variables
     public ChoiceBox<String> modeChoiceBox;
@@ -27,7 +29,7 @@ public class MainController {
     private static MainController instance;
     private static Timer timer;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         // setup Pane
         final int WIDTH = GridSize.width;
         final int HEIGHT = GridSize.height;
@@ -43,14 +45,17 @@ public class MainController {
 
         // Test JSON
         JSONhandler handler = new JSONhandler();
-        //handler.writeToJSON("Dino", 1000);
+        handler.checkIfJSONisValid();
+        handler.writeToJSON("Samc4", 69420);
         System.out.println(handler.getPlayerInfos("Wolfi"));
+        handler.deletePlayerFromJSON("Samc3");
     }
 
     @FXML
     public void onStartClicked() {
         // init Game
-        Game game = new Game(grid);
+        Gamemode gamemode = Gamemode.valueOf(modeChoiceBox.getValue());
+        Game game = new Game(grid, gamemode);
         game.createTetromino();
         game.startGameLoop();
     }
