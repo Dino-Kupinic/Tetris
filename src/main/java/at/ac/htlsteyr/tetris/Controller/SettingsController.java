@@ -1,5 +1,6 @@
 package at.ac.htlsteyr.tetris.Controller;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
@@ -11,4 +12,6 @@ public class SettingsController {
     public CheckBox musicCheckbox;
     public TextField hold;
     public TextField softDrop;
+    public Button cancelButton;
+    public Button saveButton;
 }
