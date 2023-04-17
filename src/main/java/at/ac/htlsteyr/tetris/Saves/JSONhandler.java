@@ -19,7 +19,7 @@ public class JSONhandler {
     private final Gson gson;
 
     public JSONhandler() {
-        PATH_TO_JSON = Paths.get("src/main/resources/at/ac/htlsteyr/tetris/savefile/player.json");
+        PATH_TO_JSON = Paths.get("src/main/resources/at/ac/htlsteyr/tetris/jsons/player.json");
         jsonFile = new File(PATH_TO_JSON.toUri());
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
