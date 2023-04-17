@@ -23,15 +23,15 @@
       <Label layoutX="31.0" layoutY="85.0" prefHeight="17.0" prefWidth="80.0" text="Move Left" />
       <Label layoutX="31.0" layoutY="115.0" prefHeight="17.0" prefWidth="80.0" text="Fast Drop" />
       <Label layoutX="31.0" layoutY="146.0" prefHeight="17.0" prefWidth="80.0" text="Rotate" />
-      <TextField layoutX="113.0" layoutY="51.0" prefHeight="26.0" prefWidth="80.0" text="D" />
-      <TextField layoutX="113.0" layoutY="81.0" prefHeight="26.0" prefWidth="80.0" text="A" />
-      <TextField layoutX="113.0" layoutY="111.0" prefHeight="26.0" prefWidth="80.0" text="Space" />
-      <TextField layoutX="113.0" layoutY="141.0" prefHeight="26.0" prefWidth="80.0" text="W" />
+      <TextField fx:id="moveRight" layoutX="113.0" layoutY="51.0" prefHeight="26.0" prefWidth="80.0" text="D" />
+      <TextField fx:id="moveLeft" layoutX="113.0" layoutY="81.0" prefHeight="26.0" prefWidth="80.0" text="A" />
+      <TextField fx:id="fastDrop" layoutX="113.0" layoutY="111.0" prefHeight="26.0" prefWidth="80.0" text="Space" />
+      <TextField fx:id="rotate" layoutX="113.0" layoutY="141.0" prefHeight="26.0" prefWidth="80.0" text="W" />
       <Label layoutX="210.0" layoutY="116.0" prefHeight="17.0" prefWidth="80.0" text="Soft drop" />
-      <TextField layoutX="273.0" layoutY="112.0" prefHeight="26.0" prefWidth="80.0" text="S" />
+      <TextField fx:id="softDrop" layoutX="273.0" layoutY="112.0" prefHeight="26.0" prefWidth="80.0" text="S" />
       <Label layoutX="210.0" layoutY="146.0" prefHeight="17.0" prefWidth="80.0" text="Hold" />
-      <TextField layoutX="273.0" layoutY="142.0" prefHeight="26.0" prefWidth="80.0" text="Q" />
-      <CheckBox layoutX="30.0" layoutY="208.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="80.0" text="Music" />
+      <TextField fx:id="hold" layoutX="273.0" layoutY="142.0" prefHeight="26.0" prefWidth="80.0" text="Q" />
+      <CheckBox fx:id="musicCheckbox" layoutX="30.0" layoutY="208.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="80.0" text="Music" />
       <Label layoutX="171.0" layoutY="19.0" prefHeight="19.0" prefWidth="180.0" text="Controls" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
