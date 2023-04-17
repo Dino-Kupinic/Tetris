@@ -1,6 +1,7 @@
 package at.ac.htlsteyr.tetris.Saves;
 
 
+import at.ac.htlsteyr.tetris.Model.Controls;
 import at.ac.htlsteyr.tetris.Model.Player;
 import com.google.gson.*;
 
@@ -24,7 +25,7 @@ public class JSONhandler {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    public void writeToJSON(String name, int highscore) {
+    public void writePlayerToJSON(String name, int highscore) {
         try {
             Player player = new Player(name, highscore);
 
@@ -146,5 +147,9 @@ public class JSONhandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void writeControlsToJSON(Controls controlsObject) {
+
     }
 }
