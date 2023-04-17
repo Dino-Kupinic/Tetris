@@ -1,0 +1,47 @@
+#startButton {
+    -fx-image: url("../images/start.png")
+}
+
+#startButton:hover {
+    -fx-image: url("../images/start-selected.png")
+}
+
+#startButton:disabled {
+    -fx-image: url("../images/start-running.gif")
+}
+
+#settingsButton {
+    -fx-image: url("../images/settings.png")
+}
+
+#settingsButton:hover {
+    -fx-image: url("../images/settings-selected.png")
+}
+
+#helpButton {
+    -fx-image: url("../images/question.png")
+}
+
+#helpButton:hover {
+    -fx-image: url("../images/question-selected.png")
+}
+
+#scoreLabel {
+    -fx-image: url("../images/score.png");
+}
+
+#modeLabel {
+    -fx-image: url("../images/gamemode.png");
+}
+
+#modeChoiceBox {
+    -fx-background-color: #327345;
+    -fx-font-family: 'Arial';
+    -fx-font-size: 15px;
+}
+
+#modeChoiceBox .label {
+    -fx-background-color: #327345;
+
+    -fx-text-fill: #ffffff;
+}
