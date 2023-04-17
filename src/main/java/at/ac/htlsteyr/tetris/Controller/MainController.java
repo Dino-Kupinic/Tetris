@@ -1,23 +1,22 @@
 package at.ac.htlsteyr.tetris.Controller;
 
-import at.ac.htlsteyr.tetris.Model.Game;
-import at.ac.htlsteyr.tetris.Model.Gamemode;
-import at.ac.htlsteyr.tetris.Model.Grid;
-import at.ac.htlsteyr.tetris.Model.GridSize;
+import at.ac.htlsteyr.tetris.Model.*;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+
+import java.io.IOException;
 
 public class MainController {
     // FXML Variables
     public ChoiceBox<String> modeChoiceBox;
     public AnchorPane anchorField;
+    public Label timerLabel;
     public ImageView modeLabel;
     public ImageView scoreLabel;
     public ImageView helpButton;
@@ -27,8 +26,12 @@ public class MainController {
     private Pane root;
     private Grid grid;
     private static MainController instance;
+    private static Timer timer;
+    private WindowManager windowManager;
 
-    public void initialize() {
+    public void initialize() throws IOException {
+        windowManager = new WindowManager();
+
         // setup Pane
         final int WIDTH = GridSize.width;
         final int HEIGHT = GridSize.height;
@@ -44,16 +47,30 @@ public class MainController {
 
         // Test JSON
         JSONhandler handler = new JSONhandler();
-        //handler.writeToJSON("Dino", 1000);
-        System.out.println(handler.getPlayerInfos("Wolfi"));
+        handler.checkIfJSONisValid();
     }
 
     @FXML
     public void onStartClicked() {
         // init Game
-        Game game = new Game(grid);
+        Gamemode gamemode = Gamemode.valueOf(modeChoiceBox.getValue());
+        Game game = new Game(grid, gamemode);
         game.createTetromino();
         game.startGameLoop();
+    }
+
+    @FXML
+    public void onSettingsClicked() throws IOException {
+        windowManager.createNewWindow("Settings", "settings-view.fxml", 400, 300, Modality.APPLICATION_MODAL,"styles-settings.css");
+    }
+
+    @FXML
+    public void onHelpClicked() throws IOException {
+        windowManager.createNewWindow("Help", "help-view.fxml", 300, 600, Modality.APPLICATION_MODAL,"styles-help.css");
+    }
+
+    public void setTimerLabel(String time) {
+        timerLabel.setText(time);
     }
 
     private void addDifficultyOptions() {
@@ -64,7 +81,6 @@ public class MainController {
         );
         modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
     }
-
 
     public MainController() {
         instance = this;

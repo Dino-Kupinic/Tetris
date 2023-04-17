@@ -8,16 +8,40 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Game {
-    Field[][] gameGrid;
-    TetrominoFactory tetroFactory;
-    Tetromino currentTetromino;
-    Grid grid;
+    private static Gamemode gamemode;
+    private Field[][] gameGrid;
+    private TetrominoFactory tetroFactory;
+    private Tetromino currentTetromino;
 
-    public Game(Grid grid) {
-        gameGrid = grid.getGrid();
-        tetroFactory = new TetrominoFactory();
-        currentTetromino = null;
-        this.grid = grid;
+    public Game(Grid grid, Gamemode mode) {
+        Game.gamemode = mode;
+        this.gameGrid = grid.getGrid();
+        this.tetroFactory = new TetrominoFactory();
+        this.currentTetromino = null;
+    }
+
+    public Field[][] getGameGrid() {
+        return gameGrid;
+    }
+
+    public void setGameGrid(Field[][] gameGrid) {
+        this.gameGrid = gameGrid;
+    }
+
+    public TetrominoFactory getTetroFactory() {
+        return tetroFactory;
+    }
+
+    public void setTetroFactory(TetrominoFactory tetroFactory) {
+        this.tetroFactory = tetroFactory;
+    }
+
+    public Tetromino getCurrentTetromino() {
+        return currentTetromino;
+    }
+
+    public void setCurrentTetromino(Tetromino currentTetromino) {
+        this.currentTetromino = currentTetromino;
     }
 
     public void createTetromino() {
