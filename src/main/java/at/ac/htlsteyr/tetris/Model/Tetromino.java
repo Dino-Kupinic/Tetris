@@ -1,9 +1,12 @@
 package at.ac.htlsteyr.tetris.Model;
 
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 public class Tetromino {
-    ArrayList<Block> TetrominoBlockList;
+    private TetrominoShapes shape;
+    private ArrayList<Block> TetrominoBlockList;
 
     int[][] tetroGrid = {
             {0, 0, 0, 0},
@@ -12,8 +15,9 @@ public class Tetromino {
             {0, 0, 0, 0}
     };
 
-    public Tetromino(ArrayList<Block> blockList) {
+    public Tetromino(ArrayList<Block> blockList, TetrominoShapes shape) {
         this.TetrominoBlockList = blockList;
+        this.shape = shape;
         for (Block b : blockList) {
             int x = b.getBlockPoint().x();
             int y = b.getBlockPoint().y();
@@ -27,6 +31,14 @@ public class Tetromino {
 
     public ArrayList<Block> getTetroBlocks() {
         return TetrominoBlockList;
+    }
+
+    public TetrominoShapes getShape() {
+        return shape;
+    }
+
+    public void setShape(TetrominoShapes shape) {
+        this.shape = shape;
     }
 
     public void rotate(TetrominoMovements move) {
