@@ -73,6 +73,9 @@ public class Game {
             int xOffset = 0;
             int yOffset = 0;
             int loopLimit = 0;
+            boolean hasMoved = false;
+            int tetroLength = 1;
+            int rowOfChecking = 3;
 
             @Override
             public void handle(long l) {
@@ -85,11 +88,28 @@ public class Game {
                     ArrayList<Block> blocks = currentTetromino.getTetroBlocks();
                     Color color = blocks.get(0).blockColor;
 
+
+                    try {
+                        for (int checkRowTetroGrid1 = 0; checkRowTetroGrid1 < tetroGrid.length - 1; checkRowTetroGrid1++) {
+                            for (int checkRowTetroGrid = 0; checkRowTetroGrid < tetroGrid.length; checkRowTetroGrid++) {
+                                if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
+                                    if (gameGrid[checkRowTetroGrid][yOffset + tetroGrid.length].isContainsBlock()) {
+                                        stop();
+                                    }
+                                } else {
+                                    rowOfChecking--;
+                                }
+                            }
+                            rowOfChecking = 3;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        stop();
+                    }
+
                     // move tetro
                     if (loopLimit <= 16) {
                         for (int row = 0; row < tetroGrid.length; row++) {
                             for (int col = 0; col < tetroGrid[row].length; col++) {
-
                                 // tetroGrid
                                 if (tetroGrid[row][col] == 0) {
                                     gameGrid[row][col + yOffset].getFieldNode().setFill(Color.GRAY);
@@ -102,6 +122,18 @@ public class Game {
                                     gameGrid[row][col + yOffset].updateDebugText();
                                 }
 
+                                if (currentTetromino.getShape().equals(TetrominoShapes.SHAPE_I)) {
+                                    int firstrow = 0;
+                                    System.out.println("----------I-Tetromino----------");
+                                    for (int checkRow = 0; checkRow < 4; checkRow++) {
+                                        if (hasMoved) {
+                                            gameGrid[checkRow][firstrow + yOffset - 1].getFieldNode().setFill(Color.WHITE);
+                                            gameGrid[checkRow][firstrow + yOffset - 1].setContainsBlock(false);
+                                            gameGrid[checkRow][firstrow + yOffset - 1].updateDebugText();
+                                        }
+                                    }
+
+                                }
 
                                 for (int checkRow = 0; checkRow < gameGrid.length; checkRow++) {
                                     for (int checkCol = 0; checkCol < gameGrid[checkRow].length; checkCol++) {
@@ -112,8 +144,10 @@ public class Game {
                                         }
                                     }
                                 }
+
                             }
                         }
+                        hasMoved = true;
                         xOffset++;
                         yOffset++;
                         count = 0;
