@@ -1,0 +1,9 @@
+{
+  "moveRight": "D",
+  "moveLeft": "Aff",
+  "fastDrop": "Space",
+  "rotate": "W",
+  "hold": "Q",
+  "softDrop": "S",
+  "musicCheckBox": true
+}

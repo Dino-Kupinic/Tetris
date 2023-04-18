@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.htlsteyr.tetris.Controller.SettingsController">
     <children>
-        <Button fx:id="saveButton" layoutX="30.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Save">
+        <Button fx:id="saveButton" layoutX="30.0" layoutY="253.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="30.0" prefWidth="100.0" text="Save">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></Button>
@@ -42,7 +42,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="restoreButton" layoutX="263.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Restore defaults">
+      <Button fx:id="restoreButton" layoutX="263.0" layoutY="253.0" mnemonicParsing="false" onAction="#onDefaultButtonClicked" prefHeight="30.0" prefWidth="120.0" text="Restore defaults">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

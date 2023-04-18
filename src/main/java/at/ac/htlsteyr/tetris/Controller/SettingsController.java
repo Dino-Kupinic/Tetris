@@ -2,6 +2,7 @@ package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.Controls;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -37,8 +38,23 @@ public class SettingsController {
         controlsObject.setMusicCheckbox(true);
     }
 
+    @FXML
     public void onSaveButtonClicked() {
         JSONhandler handler = new JSONhandler();
+        controlsObject.setMoveRight(moveRight.getText());
+        controlsObject.setMoveLeft(moveLeft.getText());
+        controlsObject.setRotate(rotate.getText());
+        controlsObject.setHold(hold.getText());
+        controlsObject.setFastDrop(fastDrop.getText());
+        controlsObject.setSoftdrop(softDrop.getText());
+        controlsObject.setMusicCheckbox(musicCheckbox.isSelected());
+        handler.writeControlsToJSON(controlsObject);
+    }
+
+    @FXML
+    public void onDefaultButtonClicked() {
+        JSONhandler handler = new JSONhandler();
+        setDefaultValues();
         handler.writeControlsToJSON(controlsObject);
     }
 }
