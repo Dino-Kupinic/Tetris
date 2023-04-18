@@ -47,7 +47,8 @@ public class MainController {
 
         // Test JSON
         JSONhandler handler = new JSONhandler();
-        handler.checkIfJSONisValid();
+
+        handler.checkIfSaveJSONisValid();
     }
 
     @FXML
@@ -76,8 +77,7 @@ public class MainController {
     private void addDifficultyOptions() {
         modeChoiceBox.getItems().addAll(
                 String.valueOf(Gamemode.NORMAL),
-                String.valueOf(Gamemode.TIMED),
-                String.valueOf(Gamemode.FREEPLAY)
+                String.valueOf(Gamemode.TIMED)
         );
         modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
     }
