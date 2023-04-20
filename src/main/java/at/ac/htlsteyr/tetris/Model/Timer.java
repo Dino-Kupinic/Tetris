@@ -10,7 +10,7 @@ import java.util.Date;
 public class Timer {
     private static AnimationTimer animationTimer;
     private static boolean activeTimer;
-    private static float timePlayed = 3;
+    private static float timePlayed = 120;
     private long lastFrame = -1;
 
     public static boolean getActiveTimer() {
