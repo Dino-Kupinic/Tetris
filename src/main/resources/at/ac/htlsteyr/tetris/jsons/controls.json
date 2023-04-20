@@ -1,9 +1,9 @@
 {
   "moveRight": "D",
-  "moveLeft": "Aff",
-  "fastDrop": "Space",
+  "moveLeft": "?",
+  "fastDrop": "M",
   "rotate": "W",
   "hold": "Q",
   "softDrop": "S",
-  "musicCheckBox": true
+  "musicCheckBox": false
 }
