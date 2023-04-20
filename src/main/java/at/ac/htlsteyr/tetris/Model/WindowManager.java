@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class WindowManager {
+    private static Stage stage;
 
     public void createNewWindow(
             String title,
@@ -48,10 +49,14 @@ public class WindowManager {
         scene.getStylesheets().addAll(
                 Objects.requireNonNull(Objects.requireNonNull(WindowManager.class.getResource("styles/" + stylesheet)).toExternalForm())
         );
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.setTitle(title);
         stage.setResizable(false);
         return new Result(scene, stage);
+    }
+
+    public static void closeWindow() {
+        stage.close();
     }
 
     private record Result(Scene scene, Stage stage) {}
