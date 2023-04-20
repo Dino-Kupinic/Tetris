@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.htlsteyr.tetris.Controller.InvalidControlsController">
+   <children>
+      <Button fx:id="okButton" layoutX="52.0" layoutY="160.0" mnemonicParsing="false" onAction="#onOkButtonClicked" prefHeight="26.0" prefWidth="57.0" text="Ok" />
+      <Label layoutX="15.0" layoutY="14.0" text="Invalid Control Bindings!" />
+      <TextArea editable="false" layoutX="15.0" layoutY="46.0" prefHeight="98.0" prefWidth="132.0" text="Valid Control &#10;Bindings&#10;only include letters &#10;from A-Z" />
+   </children>
+</AnchorPane>
