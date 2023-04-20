@@ -47,6 +47,16 @@ public class SettingsController {
         controlsObject.setMusicCheckbox(true);
     }
 
+    public void updateTextFields() {
+        moveRight.setText(controlsObject.getMoveRight());
+        moveLeft.setText(controlsObject.getMoveLeft());
+        fastDrop.setText(controlsObject.getFastDrop());
+        rotate.setText(controlsObject.getRotate());
+        hold.setText(controlsObject.getHold());
+        softDrop.setText(controlsObject.getSoftdrop());
+        musicCheckbox.setSelected(controlsObject.getMusicCheckbox());
+    }
+
     @FXML
     public void onSaveButtonClicked() throws IOException {
         JSONhandler handler = new JSONhandler();
@@ -96,6 +106,12 @@ public class SettingsController {
     public void onDefaultButtonClicked() {
         JSONhandler handler = new JSONhandler();
         setDefaultValues();
+        updateTextFields();
         handler.writeControlsToJSON(controlsObject);
+    }
+
+    @FXML
+    public void onCancelButtonClicked() {
+        WindowManager.closeWindow();
     }
 }
