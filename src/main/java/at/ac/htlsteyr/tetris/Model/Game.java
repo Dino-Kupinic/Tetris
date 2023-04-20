@@ -72,8 +72,10 @@ public class Game {
     }
 
     public void startGameLoop() {
-        Timer timer = new Timer();
-        timer.startTimer(MainController.getInstance());
+        if (gamemode == Gamemode.TIMED) {
+            Timer timer = new Timer();
+            timer.startTimer(MainController.getInstance());
+        }
         Scene scene = MainApplication.getInstance().getScene();
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
