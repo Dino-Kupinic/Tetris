@@ -22,6 +22,7 @@ public class MainController {
     public ImageView helpButton;
     public ImageView settingsButton;
     public ImageView startButton;
+    public Label score;
 
     private Pane root;
     private Grid grid;
@@ -44,11 +45,6 @@ public class MainController {
         anchorField.getChildren().add(root);
 
         addDifficultyOptions();
-
-        // Test JSON
-        JSONhandler handler = new JSONhandler();
-
-        handler.checkIfSaveJSONisValid();
     }
 
     @FXML
