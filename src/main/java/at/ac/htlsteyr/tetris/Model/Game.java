@@ -1,7 +1,12 @@
 package at.ac.htlsteyr.tetris.Model;
 
+import at.ac.htlsteyr.tetris.Controller.MainController;
 import at.ac.htlsteyr.tetris.Exceptions.InvalidShapeException;
+import at.ac.htlsteyr.tetris.MainApplication;
 import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -67,6 +72,14 @@ public class Game {
     }
 
     public void startGameLoop() {
+        Scene scene = MainApplication.getInstance().getScene();
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                System.out.println(keyEvent.getCode());
+            }
+        });
+
         AnimationTimer animationTimer = new AnimationTimer() {
             int count = 0;
             final int ticks = 30;
@@ -77,11 +90,11 @@ public class Game {
             int tetroLength = 1;
             int rowOfChecking = 3;
 
+
             @Override
             public void handle(long l) {
                 count++;
                 if (count == ticks) {
-
                     assert currentTetromino != null;
                     Tetromino currentTetro = currentTetromino;
                     int[][] tetroGrid = currentTetro.getTetroGrid();
