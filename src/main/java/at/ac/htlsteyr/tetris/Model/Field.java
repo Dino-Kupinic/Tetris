@@ -35,7 +35,6 @@ public class Field extends StackPane {
         } else {
             debugText.setText("0");
         }
-        System.out.println(containsBlock);
     }
 
     public void setContainsBlock(boolean bool) {
