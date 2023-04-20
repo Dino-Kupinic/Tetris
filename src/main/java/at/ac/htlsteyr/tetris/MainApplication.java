@@ -1,5 +1,6 @@
 package at.ac.htlsteyr.tetris;
 
+import at.ac.htlsteyr.tetris.Controller.MainController;
 import at.ac.htlsteyr.tetris.Model.Player;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.application.Application;
@@ -11,13 +12,16 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainApplication extends Application {
+    private static MainApplication instance;
+    Scene scene;
+
     @Override
     public void start(Stage stage) throws IOException {
         final int WINDOW_WIDTH = 960;
         final int WINDOW_HEIGHT = 720;
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
 
         scene.getStylesheets().addAll(
                 Objects.requireNonNull(Objects.requireNonNull(getClass().getResource("styles/styles.css")).toExternalForm())
@@ -31,5 +35,20 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public MainApplication() {
+        instance = this;
+    }
+
+    public static MainApplication getInstance() {
+        if (instance == null) {
+            instance = new MainApplication();
+        }
+        return instance;
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 }
