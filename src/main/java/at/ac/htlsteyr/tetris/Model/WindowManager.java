@@ -28,6 +28,19 @@ public class WindowManager {
             String FXMLfile,
             int width,
             int height,
+            Modality modality
+    ) throws IOException {
+        Result result = getResult(title, FXMLfile, width, height);
+        result.stage().initModality(modality);
+        result.stage().setScene(result.scene());
+        result.stage().show();
+    }
+
+    public void createNewWindow(
+            String title,
+            String FXMLfile,
+            int width,
+            int height,
             Modality modality,
             String stylesheet
     ) throws IOException {
@@ -49,6 +62,20 @@ public class WindowManager {
         scene.getStylesheets().addAll(
                 Objects.requireNonNull(Objects.requireNonNull(WindowManager.class.getResource("styles/" + stylesheet)).toExternalForm())
         );
+        stage = new Stage();
+        stage.setTitle(title);
+        stage.setResizable(false);
+        return new Result(scene, stage);
+    }
+
+    private Result getResult(
+            String title,
+            String FXMLfile,
+            int width,
+            int height
+    ) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(WindowManager.class.getResource(FXMLfile));
+        Scene scene = new Scene(fxmlLoader.load(), width, height);
         stage = new Stage();
         stage.setTitle(title);
         stage.setResizable(false);
