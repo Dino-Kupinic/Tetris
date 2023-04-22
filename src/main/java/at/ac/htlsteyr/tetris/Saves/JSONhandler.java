@@ -161,6 +161,15 @@ public class JSONhandler {
         }
     }
 
+    public Controls getControlsInfos() {
+        try {
+            StringBuilder sb = getStringBuilder(controlsJSONfile);
+            return gson.fromJson(sb.toString(), Controls.class);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void writeControlsToJSON(Controls controlsObject) {
         try {
             JsonObject jsonObject = new JsonObject();
