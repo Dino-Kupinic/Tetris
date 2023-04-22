@@ -50,7 +50,7 @@ public class Timer {
                     timePlayed += (new Date().getTime() - lastFrame) / 1000.0;
                 }
                 lastFrame = new Date().getTime();
-                Platform.runLater(() -> controller.setTimerLabel(String.format("%.3fs", timePlayed)));
+                Platform.runLater(() -> controller.setTimerLabel(String.format("%.1fs", timePlayed)));
             }
         };
         animationTimer.start();
