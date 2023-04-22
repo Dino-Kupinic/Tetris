@@ -1,6 +1,17 @@
-package at.ac.htlsteyr.tetris.Model;
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Samed Karaman, Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class to represent each tetromino
+ */
 
-import javafx.scene.shape.Shape;
+package at.ac.htlsteyr.tetris.Model;
 
 import java.util.ArrayList;
 
@@ -41,7 +52,7 @@ public class Tetromino {
         this.shape = shape;
     }
 
-    public void rotate(TetrominoMovements move) {
+    public void rotate(TetrominoRotations move) {
         switch (move) {
             case RIGHT -> {
                 for (int i = 0; i < tetroGrid.length; i++) {
@@ -62,27 +73,6 @@ public class Tetromino {
                         }
                     }
                 }
-            }
-            case DOWN -> {
-                for (int i = 0; i < tetroGrid.length; i++) {
-                    for (int j = 0; j < tetroGrid[0].length; j++) {
-                        if (tetroGrid[i][j] == 1) {
-                            tetroGrid[i][j] = 0;
-                            tetroGrid[i + 1][j] = 1;
-                        }
-                    }
-                }
-            }
-            case FASTDROP -> {
-                /*for(int i = 0; i < tetroGrid.length; i++) {
-                    for(int j = 0; j < tetroGrid[0].length; j++) {
-                        if(tetroGrid[i][j] == 1) {
-                            tetroGrid[i][j] = 0;
-                            tetroGrid[i+1][j] = 1;
-                        }
-                    }
-                }*/
-                System.out.println("Muss noch etabliert werden");
             }
         }
     }

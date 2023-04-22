@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic, Jannick Angerer
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class used to store each block of a tetromino
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 import javafx.scene.paint.Color;

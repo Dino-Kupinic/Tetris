@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author : Dino Kupinic
+ * @date : 22.4.2023
+ *
+ * @details
+ * Class to easily handle JSON
+ */
+
 package at.ac.htlsteyr.tetris.Saves;
 
 
@@ -29,6 +42,11 @@ public class JSONhandler {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
+    /**
+     * adds a player object to the JSON array in player.json
+     * @param name name of the player
+     * @param highscore highscore of the player
+     */
     public void writePlayerToSaveJSON(String name, int highscore) {
         try {
             Player player = new Player(name, highscore);
@@ -73,6 +91,11 @@ public class JSONhandler {
         }
     }
 
+    /**
+     * deletes a player object from the JSOn array
+     * @param name name of the player
+     * @throws IOException thrown when something goes wrong with accessing the file
+     */
     public void deletePlayerFromSaveJSON(String name) throws IOException {
         StringBuilder sb = getStringBuilder(saveJSONfile);
 
@@ -96,6 +119,12 @@ public class JSONhandler {
         fW.close();
     }
 
+    /**
+     * utility function read a whole file with a string builder
+     * @param file the file which is supposed to be read
+     * @return StringBuilder
+     * @throws FileNotFoundException Thrown when the target file can't be found
+     */
     private StringBuilder getStringBuilder(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
         StringBuilder sb = new StringBuilder();
@@ -105,10 +134,20 @@ public class JSONhandler {
         return sb;
     }
 
+    /**
+     * Checks if a given name is already inside the player JSON
+     * @param jsonString file content as a string
+     * @param name name of the player
+     * @return boolean whether the name is present
+     */
     private boolean checkIfNameAlreadyInJSON(String jsonString, String name) {
         return jsonString.contains(name);
     }
 
+    /**
+     * Checks if the player JSON is valid
+     * @throws IOException Thrown when something goes wrong when trying to access the file
+     */
     public void checkIfSaveJSONisValid() throws IOException {
         try {
             Scanner scanner = new Scanner(saveJSONfile);
@@ -121,6 +160,10 @@ public class JSONhandler {
         }
     }
 
+    /**
+     * Checks if the controls JSON is valid
+     * @throws IOException Thrown when something goes wrong when trying to access the file
+     */
     public void checkIfControlsJSONisValid() throws IOException {
         try {
             Scanner scanner = new Scanner(controlsJSONfile);
@@ -133,12 +176,22 @@ public class JSONhandler {
         }
     }
 
+    /**
+     * Adds an array initializer when the JSON is empty
+     * @param file target file
+     * @throws IOException Thrown when something goes wrong when trying to access the file
+     */
     private void addJSONArray(File file) throws IOException {
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write("[]");
         fileWriter.close();
     }
 
+    /**
+     * Gets the name and highscore from a player in the player.json
+     * @param playerName the name of the player
+     * @return player object
+     */
     public Player getPlayerInfos(String playerName) {
         try {
             StringBuilder sb = getStringBuilder(saveJSONfile);
@@ -161,6 +214,10 @@ public class JSONhandler {
         }
     }
 
+    /**
+     * gets infos about the controls object
+     * @return controls object
+     */
     public Controls getControlsInfos() {
         try {
             StringBuilder sb = getStringBuilder(controlsJSONfile);
@@ -170,6 +227,10 @@ public class JSONhandler {
         }
     }
 
+    /**
+     * writes a controls JSON object to the JSOn
+     * @param controlsObject object containing the information
+     */
     public void writeControlsToJSON(Controls controlsObject) {
         try {
             JsonObject jsonObject = new JsonObject();

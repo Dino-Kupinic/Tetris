@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class responsible for managing interaction with the controls
+ */
+
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.Controls;
@@ -10,10 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SettingsController {
     // FXML Variables
@@ -35,13 +44,19 @@ public class SettingsController {
         return controlsObject;
     }
 
+    /**
+     * initializes the controls object
+     */
     public void initialize() {
         controlsObject = new Controls(
-                "D", "A", "M",
-                "W", true, "Q", "S"
+                true, "D", "A", "M",
+                "W", "Q", "S"
         );
     }
 
+    /**
+     * restores the default values for the controls
+     */
     public void setDefaultValues() {
         controlsObject.setMoveRight("D");
         controlsObject.setMoveLeft("A");
@@ -52,6 +67,9 @@ public class SettingsController {
         controlsObject.setMusicCheckbox(true);
     }
 
+    /**
+     * updates the textfields with the current values stored in the controlsObject
+     */
     public void updateTextFields() {
         moveRight.setText(controlsObject.getMoveRight());
         moveLeft.setText(controlsObject.getMoveLeft());
@@ -62,6 +80,11 @@ public class SettingsController {
         musicCheckbox.setSelected(controlsObject.getMusicCheckbox());
     }
 
+    /**
+     * Checks if the controls are valid, if so, writes them to the JSON and closes the window.
+     * Otherwise, an error window is created.
+     * @throws IOException Thrown when something goes wrong with creating the error window
+     */
     @FXML
     public void onSaveButtonClicked() throws IOException {
         JSONhandler handler = new JSONhandler();
@@ -76,8 +99,9 @@ public class SettingsController {
         }
     }
 
-
-
+    /**
+     * updates the controlsObject with the data from the textfields and checkbox
+     */
     @FXML
     public void updateControlsObject() {
         controlsObject.setMoveRight(moveRight.getText().toUpperCase());
@@ -89,6 +113,9 @@ public class SettingsController {
         controlsObject.setMusicCheckbox(musicCheckbox.isSelected());
     }
 
+    /**
+     * restores the default values and writes them to the JSON
+     */
     @FXML
     public void onDefaultButtonClicked() {
         JSONhandler handler = new JSONhandler();
@@ -97,6 +124,9 @@ public class SettingsController {
         handler.writeControlsToJSON(controlsObject);
     }
 
+    /**
+     * closes the window
+     */
     @FXML
     public void onCancelButtonClicked() {
         WindowManager.closeWindow();

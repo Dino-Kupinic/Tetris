@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author : Dino Kupinic
+ * @date : 22.4.2023
+ *
+ * @details
+ * Class to easily create and close windows
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 import javafx.fxml.FXMLLoader;
@@ -11,6 +24,15 @@ import java.util.Objects;
 public class WindowManager {
     private static Stage stage;
 
+    /**
+     * creates a new window
+     * @param title the title of the window
+     * @param FXMLfile the fxml file which will be loaded
+     * @param width width of the window
+     * @param height height of the window
+     * @param stylesheet stylesheet for the fxml
+     * @throws IOException thrown when something goes wrong when creating the window
+     */
     public void createNewWindow(
             String title,
             String FXMLfile,
@@ -23,6 +45,15 @@ public class WindowManager {
         result.stage().show();
     }
 
+    /**
+     * creates a new window
+     * @param title the title of the window
+     * @param FXMLfile the fxml file which will be loaded
+     * @param width width of the window
+     * @param height height of the window
+     * @param modality modality of the window
+     * @throws IOException thrown when something goes wrong when creating the window
+     */
     public void createNewWindow(
             String title,
             String FXMLfile,
@@ -36,6 +67,16 @@ public class WindowManager {
         result.stage().show();
     }
 
+    /**
+     * creates a new window
+     * @param title the title of the window
+     * @param FXMLfile the fxml file which will be loaded
+     * @param width width of the window
+     * @param height height of the window
+     * @param modality modality of the window
+     * @param stylesheet stylesheet for the fxml
+     * @throws IOException thrown when something goes wrong when creating the window
+     */
     public void createNewWindow(
             String title,
             String FXMLfile,
@@ -50,6 +91,16 @@ public class WindowManager {
         result.stage().show();
     }
 
+    /**
+     * creates a stage, scene also FXMLLoader. Also sets properties like title and if the window is resizable
+     * @param title the title of the window
+     * @param FXMLfile the fxml file which will be loaded
+     * @param width width of the window
+     * @param height height of the window
+     * @param stylesheet stylesheet for the fxml
+     * @return record containing the scene and stage
+     * @throws IOException thrown when something goes wrong when creating the window
+     */
     private Result getResult(
             String title,
             String FXMLfile,
@@ -68,6 +119,15 @@ public class WindowManager {
         return new Result(scene, stage);
     }
 
+    /**
+     * creates a stage, scene also FXMLLoader. Also sets properties like title and if the window is resizable
+     * @param title the title of the window
+     * @param FXMLfile the fxml file which will be loaded
+     * @param width width of the window
+     * @param height height of the window
+     * @return record containing the scene and stage
+     * @throws IOException thrown when something goes wrong when creating the window
+     */
     private Result getResult(
             String title,
             String FXMLfile,
@@ -82,6 +142,9 @@ public class WindowManager {
         return new Result(scene, stage);
     }
 
+    /**
+     * closes the current window
+     */
     public static void closeWindow() {
         stage.close();
     }

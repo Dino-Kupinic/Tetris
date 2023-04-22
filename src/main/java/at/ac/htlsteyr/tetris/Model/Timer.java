@@ -1,16 +1,28 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic, Jannick Angerer
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class to handle the timer in timed-mode
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 import at.ac.htlsteyr.tetris.Controller.MainController;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 
-import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Timer {
     private static AnimationTimer animationTimer;
     private static boolean activeTimer;
-    private static float timePlayed = 120;
+    private static float timePlayed = 0;
     private long lastFrame = -1;
 
     public static boolean getActiveTimer() {
@@ -27,7 +39,6 @@ public class Timer {
 
     /**
      * starts the timer and updates the timer label
-     *
      * @param controller the MainController
      */
     public void startTimer(MainController controller) {
@@ -35,17 +46,12 @@ public class Timer {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                if (timePlayed <= 0) {
-                    stopTimer();
-                    return; // exit the method to prevent further updates
+                if (lastFrame != -1) {
+                    timePlayed += (new Date().getTime() - lastFrame) / 1000.0;
                 }
-                if (lastFrame != -1 ) {
-                        timePlayed -= (new Date().getTime() - lastFrame) / 1000.0;
-                    }
-                    lastFrame = new Date().getTime();
-                    Platform.runLater(() -> controller.setTimerLabel(String.format("%.1fs", timePlayed)));
-                    System.out.println(String.format("%.1fs", timePlayed));
-                }
+                lastFrame = new Date().getTime();
+                Platform.runLater(() -> controller.setTimerLabel(String.format("%.3fs", timePlayed)));
+            }
         };
         animationTimer.start();
     }

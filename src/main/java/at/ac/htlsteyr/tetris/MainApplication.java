@@ -1,8 +1,18 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author : Dino Kupinic
+ * @date : 22.4.2023
+ *
+ * @details
+ * main class
+ */
+
 package at.ac.htlsteyr.tetris;
 
-import at.ac.htlsteyr.tetris.Controller.MainController;
-import at.ac.htlsteyr.tetris.Model.Player;
-import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

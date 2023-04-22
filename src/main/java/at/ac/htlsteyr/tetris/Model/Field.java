@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author : Jannick Angerer, Dino Kupinic
+ * @date : 22.4.2023
+ *
+ * @details
+ * Class used to display each field in a grid
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 import javafx.scene.layout.StackPane;
@@ -10,7 +23,6 @@ public class Field extends StackPane {
     private Rectangle fieldNode;
     private boolean containsBlock;
     private final int FIELD_SIZE = 30;
-
     private final Text debugText = new Text();
 
     public Field(int x, int y, boolean containsTetrominoBlock) {
@@ -49,7 +61,7 @@ public class Field extends StackPane {
         return containsBlock;
     }
 
-    public Paint getFieldNodeColor () {
+    public Paint getFieldNodeColor() {
         return fieldNode.getFill();
     }
 }

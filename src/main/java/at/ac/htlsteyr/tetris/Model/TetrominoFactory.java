@@ -1,8 +1,20 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class responsible for creating tetrominos based on a passed shape
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 import at.ac.htlsteyr.tetris.Exceptions.InvalidShapeException;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * data class containing constants about the grid
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 public class GridSize {

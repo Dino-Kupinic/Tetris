@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class to store a player
+ */
+
 package at.ac.htlsteyr.tetris.Model;
 
 public class Player {

@@ -1,3 +1,16 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class responsible for interaction with the save window after the game has ended
+ */
+
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;

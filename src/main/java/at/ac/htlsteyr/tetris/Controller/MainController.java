@@ -1,7 +1,19 @@
+/*-----------------------------------------------------------------------------
+ *              Hoehere Technische Bundeslehranstalt STEYR
+ *----------------------------------------------------------------------------*/
+/**
+ * Kurzbeschreibung
+ *
+ * @author  : Dino Kupinic
+ * @date    : 22.4.2023
+ *
+ * @details
+ * Class responsible for managing interaction with the game and user interface
+ */
+
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.*;
-import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -31,6 +43,9 @@ public class MainController {
     private static Timer timer;
     private WindowManager windowManager;
 
+    /**
+     * initializes the game grid and controls
+     */
     public void initialize() {
         // initialize settings so controls can be used without having to open the menu
         SettingsController.getInstance().initialize();
@@ -51,6 +66,9 @@ public class MainController {
         anchorField.getChildren().add(root);
     }
 
+    /**
+     * starts the game
+     */
     @FXML
     public void onStartClicked() {
         // init Game
@@ -60,20 +78,35 @@ public class MainController {
         game.startGameLoop();
     }
 
+    /**
+     * opens the settings window
+     * @throws IOException Thrown when something goes wrong with creating the window
+     */
     @FXML
     public void onSettingsClicked() throws IOException {
         windowManager.createNewWindow("Settings", "settings-view.fxml", 400, 300, Modality.APPLICATION_MODAL,"styles-settings.css");
     }
 
+    /**
+     * opens the help window
+     * @throws IOException Thrown when something goes wrong with creating the window
+     */
     @FXML
     public void onHelpClicked() throws IOException {
         windowManager.createNewWindow("Help", "help-view.fxml", 300, 600, Modality.APPLICATION_MODAL,"styles-help.css");
     }
 
+    /**
+     * Sets the displayed time to a value
+     * @param time the time value
+     */
     public void setTimerLabel(String time) {
         timerLabel.setText(time);
     }
 
+    /**
+     * adds the difficulties to the choicebox
+     */
     private void addDifficultyOptions() {
         modeChoiceBox.getItems().addAll(
                 String.valueOf(Gamemode.NORMAL),
@@ -82,10 +115,16 @@ public class MainController {
         modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
     }
 
+    /**
+     * makes the timer header label visible
+     */
     public void setTimerLabelVisible() {
         timerHeader.setVisible(true);
     }
 
+    /**
+     * makes the timer header label invisible
+     */
     public void setTimerLabelInvisible() {
         timerHeader.setVisible(false);
     }
