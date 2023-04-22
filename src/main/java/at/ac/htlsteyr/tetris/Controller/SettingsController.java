@@ -29,6 +29,11 @@ public class SettingsController {
     public Button restoreButton;
 
     private Controls controlsObject;
+    private static SettingsController instance;
+
+    public Controls getControlsObject() {
+        return controlsObject;
+    }
 
     public void initialize() {
         controlsObject = new Controls(
@@ -60,46 +65,28 @@ public class SettingsController {
     @FXML
     public void onSaveButtonClicked() throws IOException {
         JSONhandler handler = new JSONhandler();
-        if (checkValidValues()) {
-            controlsObject.setMoveRight(moveRight.getText());
-            controlsObject.setMoveLeft(moveLeft.getText());
-            controlsObject.setRotate(rotate.getText());
-            controlsObject.setHold(hold.getText());
-            controlsObject.setFastDrop(fastDrop.getText());
-            controlsObject.setSoftdrop(softDrop.getText());
-            controlsObject.setMusicCheckbox(musicCheckbox.isSelected());
+        updateControlsObject();
+        if (controlsObject.checkValidValues(controlsObject)) {
+            updateControlsObject();
             handler.writeControlsToJSON(controlsObject);
-            //WindowManager.closeWindow();
+            WindowManager.closeWindow();
         } else {
             WindowManager windowManager = new WindowManager();
-            windowManager.createNewWindow("Error", "invalidControls.fxml", 160, 200, Modality.APPLICATION_MODAL, "");
+            windowManager.createNewWindow("Error", "invalidControls.fxml", 160, 200, Modality.APPLICATION_MODAL);
         }
     }
 
-    private boolean checkValidValues() {
-        Pattern pattern = Pattern.compile("[A-Z]");
 
-        Object obj = controlsObject;
-        for (Method method : obj.getClass().getMethods()) {
-            if (
-                    method.getName().startsWith("get") &&
-                    !method.getName().contains("MusicCheckbox") && // Non-string output
-                    !method.getName().contains("Class") && // .getClass()
-                    method.getParameterTypes().length == 0
-            ) {
-                try {
-                    Object getterObj = method.invoke(obj);
-                    String value = getterObj.toString();
-                    Matcher matcher = pattern.matcher(value);
-                    if (!matcher.matches()) {
-                        return false;
-                    }
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        return true;
+
+    @FXML
+    public void updateControlsObject() {
+        controlsObject.setMoveRight(moveRight.getText().toUpperCase());
+        controlsObject.setMoveLeft(moveLeft.getText().toUpperCase());
+        controlsObject.setFastDrop(fastDrop.getText().toUpperCase());
+        controlsObject.setSoftdrop(softDrop.getText().toUpperCase());
+        controlsObject.setRotate(rotate.getText().toUpperCase());
+        controlsObject.setHold(hold.getText().toUpperCase());
+        controlsObject.setMusicCheckbox(musicCheckbox.isSelected());
     }
 
     @FXML
@@ -113,5 +100,16 @@ public class SettingsController {
     @FXML
     public void onCancelButtonClicked() {
         WindowManager.closeWindow();
+    }
+
+    public SettingsController() {
+        instance = this;
+    }
+
+    public static SettingsController getInstance() {
+        if (instance == null) {
+            instance = new SettingsController();
+        }
+        return instance;
     }
 }
