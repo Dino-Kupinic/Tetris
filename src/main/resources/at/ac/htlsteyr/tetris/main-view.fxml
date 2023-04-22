@@ -20,10 +20,18 @@
       <ImageView fx:id="helpButton" fitHeight="40.0" fitWidth="40.0" layoutX="903.0" layoutY="666.0" onMouseClicked="#onHelpClicked" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="scoreLabel" fitHeight="20.0" fitWidth="80.0" layoutX="10.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="modeLabel" fitHeight="20.0" fitWidth="120.0" layoutX="10.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="timerLabel" layoutX="20.0" layoutY="336.0" />
+      <Label fx:id="timerLabel" layoutX="864.0" layoutY="252.0" prefHeight="20.0" prefWidth="64.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
       <Label fx:id="score" layoutX="20.0" layoutY="252.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="timerHeader" layoutX="864.0" layoutY="219.0" text="Timer" textFill="WHITE" visible="false">
+         <font>
+            <Font size="21.0" />
          </font>
       </Label>
    </children>
