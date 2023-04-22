@@ -1,12 +1,11 @@
 package at.ac.htlsteyr.tetris.Model;
 
 import at.ac.htlsteyr.tetris.Controller.MainController;
+import at.ac.htlsteyr.tetris.Controller.SettingsController;
 import at.ac.htlsteyr.tetris.Exceptions.InvalidShapeException;
 import at.ac.htlsteyr.tetris.MainApplication;
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -75,12 +74,37 @@ public class Game {
         if (gamemode == Gamemode.TIMED) {
             Timer timer = new Timer();
             timer.startTimer(MainController.getInstance());
+
+            MainController.getInstance().setTimerLabelVisible();
         }
+
         Scene scene = MainApplication.getInstance().getScene();
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                System.out.println(keyEvent.getCode());
+        scene.setOnKeyPressed(keyEvent -> {
+            Controls controls = SettingsController.getInstance().getControlsObject();
+            String key = keyEvent.getCode().toString();
+
+            if (Objects.equals(controls.getMoveLeft(), key)) {
+                System.out.println("move left");
+            }
+
+            if (Objects.equals(controls.getMoveRight(), key)) {
+                System.out.println("move right");
+            }
+
+            if (Objects.equals(controls.getHold(), key)) {
+                System.out.println("hold");
+            }
+
+            if (Objects.equals(controls.getRotate(), key)) {
+                System.out.println("rotate");
+            }
+
+            if (Objects.equals(controls.getSoftdrop(), key)) {
+                System.out.println("soft drop");
+            }
+
+            if (Objects.equals(controls.getFastDrop(), key)) {
+                System.out.println("fast drop");
             }
         });
 
@@ -143,31 +167,30 @@ public class Game {
         };
         animationTimer.start();
     }
-    
 
-    public void tetroFall (int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
+
+    public void tetroFall(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         // move tetro
 
-            for (int row = 0; row < tetroGrid.length; row++) {
-                for (int col = 0; col < tetroGrid[row].length; col++) {
-                    // tetroGrid
-                    if (tetroGrid[row][col] == 0) {
-                        gameGrid[row][col + yOffset].getFieldNode().setFill(Color.GRAY);
-                    }
-
-                    // tetro
-                    if (tetroGrid[row][col] == 1) {
-                        gameGrid[row][col + yOffset].getFieldNode().setFill(color);
-                        gameGrid[row][col + yOffset].setContainsBlock(true);
-                        gameGrid[row][col + yOffset].updateDebugText();
-                    }
-
-
-
-                    deleteLastBlock(hasMoved, yOffset);
-
+        for (int row = 0; row < tetroGrid.length; row++) {
+            for (int col = 0; col < tetroGrid[row].length; col++) {
+                // tetroGrid
+                if (tetroGrid[row][col] == 0) {
+                    gameGrid[row][col + yOffset].getFieldNode().setFill(Color.GRAY);
                 }
+
+                // tetro
+                if (tetroGrid[row][col] == 1) {
+                    gameGrid[row][col + yOffset].getFieldNode().setFill(color);
+                    gameGrid[row][col + yOffset].setContainsBlock(true);
+                    gameGrid[row][col + yOffset].updateDebugText();
+                }
+
+
+                deleteLastBlock(hasMoved, yOffset);
+
             }
+        }
 
     }
 
