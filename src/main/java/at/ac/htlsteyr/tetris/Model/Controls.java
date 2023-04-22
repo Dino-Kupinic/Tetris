@@ -1,5 +1,10 @@
 package at.ac.htlsteyr.tetris.Model;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Controls {
     private String moveRight;
     private String moveLeft;
@@ -81,5 +86,30 @@ public class Controls {
 
     public void setSoftdrop(String softdrop) {
         this.softdrop = softdrop;
+    }
+
+    public boolean checkValidValues(Controls controlsObject) {
+        Pattern pattern = Pattern.compile("^[A-Z]");
+
+        for (Method method : ((Object) controlsObject).getClass().getMethods()) {
+            if (
+                    method.getName().startsWith("get") &&
+                            !method.getName().contains("MusicCheckbox") && // Non-string output
+                            !method.getName().contains("Class") && // .getClass()
+                            method.getParameterTypes().length == 0
+            ) {
+                try {
+                    Object getterObj = method.invoke(controlsObject);
+                    String value = getterObj.toString();
+                    Matcher matcher = pattern.matcher(value);
+                    if (!matcher.matches()) {
+                        return false;
+                    }
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return true;
     }
 }
