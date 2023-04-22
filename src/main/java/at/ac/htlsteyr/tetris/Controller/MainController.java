@@ -23,6 +23,7 @@ public class MainController {
     public ImageView settingsButton;
     public ImageView startButton;
     public Label score;
+    public Label timerHeader;
 
     private Pane root;
     private Grid grid;
@@ -30,7 +31,11 @@ public class MainController {
     private static Timer timer;
     private WindowManager windowManager;
 
-    public void initialize() throws IOException {
+    public void initialize() {
+        // initialize settings so controls can be used without having to open the menu
+        SettingsController.getInstance().initialize();
+
+        // init window manager
         windowManager = new WindowManager();
 
         // setup Pane
@@ -38,13 +43,12 @@ public class MainController {
         final int HEIGHT = GridSize.height;
         root = new Pane();
         root.setPrefSize(HEIGHT, WIDTH);
+        addDifficultyOptions();
 
         // init Grid
         grid = new Grid(root);
         root = grid.generateGrid();
         anchorField.getChildren().add(root);
-
-        addDifficultyOptions();
     }
 
     @FXML
@@ -76,6 +80,14 @@ public class MainController {
                 String.valueOf(Gamemode.TIMED)
         );
         modeChoiceBox.setValue(String.valueOf(Gamemode.NORMAL));
+    }
+
+    public void setTimerLabelVisible() {
+        timerHeader.setVisible(true);
+    }
+
+    public void setTimerLabelInvisible() {
+        timerHeader.setVisible(false);
     }
 
     public MainController() {
