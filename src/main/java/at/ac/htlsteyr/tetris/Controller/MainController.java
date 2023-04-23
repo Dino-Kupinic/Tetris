@@ -73,9 +73,13 @@ public class MainController {
     public void onStartClicked() {
         // init Game
         Gamemode gamemode = Gamemode.valueOf(modeChoiceBox.getValue());
-        Game game = new Game(grid, gamemode);
-        game.createTetromino();
-        game.startGameLoop();
+        if (!startButton.isDisabled()) {
+            Game game = new Game(grid, gamemode);
+            game.createTetromino();
+            game.startGameLoop();
+        }
+
+        startButton.setDisable(true);
     }
 
     /**
