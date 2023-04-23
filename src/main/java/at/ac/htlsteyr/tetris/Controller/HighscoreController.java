@@ -13,6 +13,7 @@
 
 package at.ac.htlsteyr.tetris.Controller;
 
+import at.ac.htlsteyr.tetris.Model.WindowManager;
 import at.ac.htlsteyr.tetris.Saves.JSONhandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,5 +30,6 @@ public class HighscoreController {
         JSONhandler handler = new JSONhandler();
         handler.checkIfSaveJSONisValid();
         handler.writePlayerToSaveJSON(playerNameInput.getText(), Integer.parseInt(MainController.getInstance().score.getText()));
+        WindowManager.closeWindow();
     }
 }
