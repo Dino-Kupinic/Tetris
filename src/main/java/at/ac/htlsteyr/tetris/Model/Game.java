@@ -22,6 +22,8 @@ public class Game {
     int xOffset = 0;
     int yOffset = 0;
 
+    boolean collisionCheck;
+
     boolean hasMoved = false;
 
     public Game(Grid grid, Gamemode mode) {
@@ -110,7 +112,8 @@ public class Game {
             int loopLimit = 0;
             int tetroLength = 1;
             int rowOfChecking = 3;
-            boolean collisionCheck;
+
+
 
 
             @Override
@@ -163,15 +166,23 @@ public class Game {
 
                 count++;
                 if (count == ticks) {
-
+                    System.out.println("daawf");
                     tetroCollision(tetroGrid);
-
+                    loopLimit++;
                     if (loopLimit <= 16) {
                         tetroFall(tetroGrid, yOffset, color, hasMoved, xOffset);
                         hasMoved = true;
                         yOffset++;
                         count = 0;
-                        loopLimit++;
+                    } else {
+                        loopLimit = 0;
+                        xOffset = 0;
+                        yOffset = 0;
+                        hasMoved = false;
+                        count = 0;
+                        createTetromino();
+
+                        start();
                     }
 
 
@@ -184,6 +195,7 @@ public class Game {
                         for (int checkRowTetroGrid = 0; checkRowTetroGrid < tetroGrid.length; checkRowTetroGrid++) {
                             if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
                                 if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length].isContainsBlock()) {
+                                    collisionCheck = true;
                                     stop();
                                     createTetromino();
                                 }
@@ -215,7 +227,6 @@ public class Game {
 
     public void tetroFall(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         // move tetro
-
         for (int row = 0; row < tetroGrid.length; row++) {
             for (int col = 0; col < tetroGrid[row].length; col++) {
                 xOffset = getxOffset();
@@ -275,7 +286,7 @@ public class Game {
     }
 
     public void moveRight (int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
-        if (xOffset < 10) {
+        if (xOffset < 10 && yOffset <= 16 && !collisionCheck) {
             xOffset++;
             setxOffset(xOffset);
             yOffset = getyOffset();
@@ -301,7 +312,7 @@ public class Game {
     }
 
     public void moveLeft (int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
-        if (xOffset != 0) {
+        if (xOffset != 0 && yOffset <= 16 && !collisionCheck) {
             xOffset--;
             setxOffset(xOffset);
             for (int row = 0; row < tetroGrid.length; row++) {
