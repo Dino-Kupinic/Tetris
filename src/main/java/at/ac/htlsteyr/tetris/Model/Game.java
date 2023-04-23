@@ -7,7 +7,9 @@ import at.ac.htlsteyr.tetris.MainApplication;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -131,6 +133,15 @@ public class Game {
 
                     if (Objects.equals(controls.getFastDrop(), key)) {
                         System.out.println("fast drop");
+                    }
+
+                    if (Objects.equals(key, "ESCAPE")) {
+                        WindowManager windowManager = new WindowManager();
+                        try {
+                            windowManager.createNewWindow("Save Highscore", "highscore-view.fxml", 300, 200, Modality.APPLICATION_MODAL);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
 
