@@ -53,6 +53,22 @@ public class Game {
         this.currentTetromino = currentTetromino;
     }
 
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
+    }
+
+    public void setxOffset(int xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public void setyOffset(int yOffset) {
+        this.yOffset = yOffset;
+    }
+
     public void createTetromino() {
         try {
             // generate random number
@@ -110,11 +126,11 @@ public class Game {
 
 
                     if (Objects.equals(controls.getMoveLeft(), key)) {
-                        System.out.println("move left");
+                        moveLeft(tetroGrid, getyOffset(), color, hasMoved, getxOffset());
                     }
 
                     if (Objects.equals(controls.getMoveRight(), key)) {
-                        moveRight(tetroGrid, yOffset, color, hasMoved, xOffset);
+                        moveRight(tetroGrid, getyOffset(), color, hasMoved, getxOffset());
                     }
 
                     if (Objects.equals(controls.getHold(), key)) {
@@ -191,6 +207,7 @@ public class Game {
 
         for (int row = 0; row < tetroGrid.length; row++) {
             for (int col = 0; col < tetroGrid[row].length; col++) {
+                xOffset = getxOffset();
                 // tetroGrid
                 if (tetroGrid[row][col] == 0) {
                     gameGrid[row + xOffset][col + yOffset].getFieldNode().setFill(Color.GRAY);
@@ -223,13 +240,13 @@ public class Game {
             }
         }
 
-        if (xOffset == 1) {
+        if (xOffset >= 1) {
             int firstcol = 0;
             for (int checkCol = 0; checkCol < 4; checkCol++) {
                 if (hasMoved) {
-                    gameGrid[firstcol + xOffset - 1][checkCol + yOffset].getFieldNode().setFill(Color.WHITE);
-                    gameGrid[firstcol + xOffset - 1][checkCol + yOffset].setContainsBlock(false);
-                    gameGrid[firstcol + xOffset - 1][checkCol + yOffset].updateDebugText();
+                    gameGrid[firstcol + xOffset-1][checkCol + yOffset].getFieldNode().setFill(Color.WHITE);
+                    gameGrid[firstcol + xOffset-1][checkCol + yOffset].setContainsBlock(false);
+                    gameGrid[firstcol + xOffset-1][checkCol + yOffset].updateDebugText();
                 }
             }
         }
@@ -247,24 +264,52 @@ public class Game {
     }
 
     public void moveRight (int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
-        xOffset++;
-        for (int row = 0; row < tetroGrid.length; row++) {
-            for (int col = 0; col < tetroGrid[row].length; col++) {
-                // tetroGrid
-                if (tetroGrid[row][col] == 0) {
-                    gameGrid[row + xOffset][col + yOffset].getFieldNode().setFill(Color.GRAY);
+        if (xOffset < 10) {
+            xOffset++;
+            setxOffset(xOffset);
+            yOffset = getyOffset();
+            for (int row = 0; row < tetroGrid.length; row++) {
+                for (int col = 0; col < tetroGrid[row].length; col++) {
+                    // tetroGrid
+                    if (tetroGrid[row][col] == 0) {
+                        gameGrid[row + xOffset][col + yOffset].getFieldNode().setFill(Color.GRAY);
+                    }
+
+                    // tetro
+                    if (tetroGrid[row][col] == 1) {
+                        gameGrid[row + xOffset][col + yOffset - 1].getFieldNode().setFill(color);
+                        gameGrid[row + xOffset][col + yOffset - 1].setContainsBlock(true);
+                        gameGrid[row + xOffset][col + yOffset - 1].updateDebugText();
+                    }
+
+                    deleteLastBlock(hasMoved, yOffset, xOffset);
+
                 }
+            }
+        }
+    }
 
-                // tetro
-                if (tetroGrid[row][col] == 1) {
-                    gameGrid[row + xOffset][col + yOffset-1].getFieldNode().setFill(color);
-                    gameGrid[row + xOffset][col + yOffset-1].setContainsBlock(true);
-                    gameGrid[row + xOffset][col + yOffset-1].updateDebugText();
+    public void moveLeft (int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
+        if (xOffset != 0) {
+            xOffset--;
+            setxOffset(xOffset);
+            for (int row = 0; row < tetroGrid.length; row++) {
+                for (int col = 0; col < tetroGrid[row].length; col++) {
+                    // tetroGrid
+                    if (tetroGrid[row][col] == 0) {
+                        gameGrid[row + xOffset][col + yOffset].getFieldNode().setFill(Color.GRAY);
+                    }
+
+                    // tetro
+                    if (tetroGrid[row][col] == 1) {
+                        gameGrid[row + xOffset][col + yOffset - 1].getFieldNode().setFill(color);
+                        gameGrid[row + xOffset][col + yOffset - 1].setContainsBlock(true);
+                        gameGrid[row + xOffset][col + yOffset - 1].updateDebugText();
+                    }
+
+                    deleteLastBlock(hasMoved, yOffset, xOffset);
+
                 }
-
-
-                deleteLastBlock(hasMoved, yOffset, xOffset);
-
             }
         }
     }
