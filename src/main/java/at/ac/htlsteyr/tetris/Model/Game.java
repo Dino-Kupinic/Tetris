@@ -169,10 +169,10 @@ public class Game {
 
             private void tetroCollision(int[][] tetroGrid) {
                 try {
-                    for (int checkRowTetroGrid1 = 0; checkRowTetroGrid1 < tetroGrid.length - 1; checkRowTetroGrid1++) {
+                    for (int checkRowTetroGrid1 = 0; checkRowTetroGrid1 < tetroGrid.length; checkRowTetroGrid1++) {
                         for (int checkRowTetroGrid = 0; checkRowTetroGrid < tetroGrid.length; checkRowTetroGrid++) {
                             if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
-                                if (gameGrid[checkRowTetroGrid + xOffset][yOffset + tetroGrid.length].isContainsBlock()) {
+                                if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length].isContainsBlock()) {
                                     stop();
                                     createTetromino();
                                 }
