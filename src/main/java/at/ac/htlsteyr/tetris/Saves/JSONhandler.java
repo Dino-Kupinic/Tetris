@@ -92,7 +92,7 @@ public class JSONhandler {
     }
 
     /**
-     * deletes a player object from the JSOn array
+     * deletes a player object from the JSON array
      * @param name name of the player
      * @throws IOException thrown when something goes wrong with accessing the file
      */
