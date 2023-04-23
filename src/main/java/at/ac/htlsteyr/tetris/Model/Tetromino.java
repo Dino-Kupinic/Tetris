@@ -52,6 +52,10 @@ public class Tetromino {
         this.shape = shape;
     }
 
+    public void setTetroGrid(int[][] tetroGrid) {
+        this.tetroGrid = tetroGrid;
+    }
+
     public void rotate(TetrominoRotations move) {
         switch (move) {
             case RIGHT -> {
