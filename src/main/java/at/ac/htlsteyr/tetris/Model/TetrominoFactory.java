@@ -70,10 +70,10 @@ public class TetrominoFactory {
             case SHAPE_S -> {
                 Color col = Color.GREEN;
                 return new Tetromino(new ArrayList<>(Arrays.asList(
-                        new Block(new Point(0, 3), col),
-                        new Block(new Point(1, 3), col),
+                        new Block(new Point(0, 1), col),
+                        new Block(new Point(0, 2), col),
                         new Block(new Point(1, 2), col),
-                        new Block(new Point(2, 2), col)
+                        new Block(new Point(1, 3), col)
                 )), shape);
             }
             case SHAPE_Z -> {
