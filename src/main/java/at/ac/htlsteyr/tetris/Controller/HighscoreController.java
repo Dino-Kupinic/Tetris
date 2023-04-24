@@ -30,6 +30,7 @@ public class HighscoreController {
         JSONhandler handler = new JSONhandler();
         handler.checkIfSaveJSONisValid();
         handler.writePlayerToSaveJSON(playerNameInput.getText(), Integer.parseInt(MainController.getInstance().score.getText()));
+        MainController.getInstance().updateLeaderBoard();
         WindowManager.closeWindow();
     }
 }

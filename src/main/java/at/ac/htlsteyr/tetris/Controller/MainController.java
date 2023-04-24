@@ -14,9 +14,16 @@
 package at.ac.htlsteyr.tetris.Controller;
 
 import at.ac.htlsteyr.tetris.Model.*;
+import at.ac.htlsteyr.tetris.Saves.JSONhandler;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -36,6 +43,9 @@ public class MainController {
     public ImageView startButton;
     public Label score;
     public Label timerHeader;
+    public TableView<Player> leaderboard;
+    public TableColumn<Player, String> nameCol;
+    public TableColumn<Player, Integer> scoreCol;
 
     private Pane root;
     private Grid grid;
@@ -49,6 +59,7 @@ public class MainController {
     public void initialize() {
         // initialize settings so controls can be used without having to open the menu
         SettingsController.getInstance().initialize();
+        updateLeaderBoard();
 
         // init window manager
         windowManager = new WindowManager();
@@ -64,6 +75,13 @@ public class MainController {
         grid = new Grid(root);
         root = grid.generateGrid();
         anchorField.getChildren().add(root);
+    }
+
+    public void updateLeaderBoard() {
+        JSONhandler handler = new JSONhandler();
+        leaderboard.setItems(handler.getAllPlayers());
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        scoreCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
     }
 
     /**

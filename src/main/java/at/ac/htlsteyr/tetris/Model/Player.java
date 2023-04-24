@@ -40,7 +40,10 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player=[NAME: " + name + " | HIGHSCORE: " + highscore + "]";
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", highscore=" + highscore +
+                '}';
     }
 }
 

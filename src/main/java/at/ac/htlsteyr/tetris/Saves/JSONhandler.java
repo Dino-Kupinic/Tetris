@@ -17,6 +17,8 @@ package at.ac.htlsteyr.tetris.Saves;
 import at.ac.htlsteyr.tetris.Model.Controls;
 import at.ac.htlsteyr.tetris.Model.Player;
 import com.google.gson.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -209,6 +211,27 @@ public class JSONhandler {
                 }
             }
             return null;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * reads all players from the player.json
+     * @return observable list with all players
+     */
+    public ObservableList<Player> getAllPlayers() {
+        try {
+            StringBuilder sb = getStringBuilder(saveJSONfile);
+            JsonArray jsonArray = gson.fromJson(sb.toString(), JsonArray.class);
+            ObservableList<Player> players = FXCollections.observableArrayList();
+
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonElement jsonElement = jsonArray.get(i);
+                Player player = gson.fromJson(jsonElement, Player.class);
+                players.add(player);
+            }
+            return players;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
