@@ -168,7 +168,7 @@ public class Game {
                 if (count == ticks) {
                     System.out.println("daawf");
                     tetroCollision(tetroGrid);
-                    loopLimit++;
+                    loopLimit++; //loopLimit hier verursacht, dass das Tetromino nicht nach ganzu unten fällt
                     if (loopLimit <= 16) {
                         tetroFall(tetroGrid, yOffset, color, hasMoved, xOffset);
                         hasMoved = true;
