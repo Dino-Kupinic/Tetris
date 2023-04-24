@@ -36,17 +36,7 @@ public class Field extends StackPane {
         setTranslateX(x * FIELD_SIZE);
         setTranslateY(y * FIELD_SIZE);
 
-        updateDebugText();
-
         this.getChildren().addAll(fieldNode, debugText);
-    }
-
-    public void updateDebugText() {
-        if (containsBlock) {
-            debugText.setText("1");
-        } else {
-            debugText.setText("0");
-        }
     }
 
     public void setContainsBlock(boolean bool) {
