@@ -190,7 +190,7 @@ public class Game {
                     for (int checkRowTetroGrid1 = 0; checkRowTetroGrid1 < tetroGrid.length; checkRowTetroGrid1++) {
                         for (int checkRowTetroGrid = 0; checkRowTetroGrid < tetroGrid.length; checkRowTetroGrid++) {
                             if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
-                                if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock()) {
+                                if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset != 0) {
                                     collisionCheck = true;
                                     stop();
                                     loopLimit = 0;
@@ -202,6 +202,8 @@ public class Game {
                                     endOfGameGrid = false;
                                     createTetromino();
                                     start();
+                                } else if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset == 0) {
+                                    stop();
                                 }
                             } else {
                                 rowOfChecking--;
@@ -247,7 +249,6 @@ public class Game {
                 if (tetroGrid[row][col] == 1) {
                     gameGrid[row + xOffset][col + yOffset].getFieldNode().setFill(color);
                     gameGrid[row + xOffset][col + yOffset].setContainsBlock(true);
-                    gameGrid[row + xOffset][col + yOffset].updateDebugText();
                 }
                 deleteLastBlock(hasMoved, yOffset, xOffset);
             }
@@ -262,7 +263,7 @@ public class Game {
                 if (hasMoved) {
                     gameGrid[checkRow + xOffset][firstcol + yOffset - 1].getFieldNode().setFill(Color.WHITE);
                     gameGrid[checkRow + xOffset][firstcol + yOffset - 1].setContainsBlock(false);
-                    gameGrid[checkRow + xOffset][firstcol + yOffset - 1].updateDebugText();
+
                 }
             }
         }
@@ -273,7 +274,7 @@ public class Game {
                 if (hasMoved) {
                     gameGrid[firstcol + xOffset - 1][checkCol + yOffset].getFieldNode().setFill(Color.WHITE);
                     gameGrid[firstcol + xOffset - 1][checkCol + yOffset].setContainsBlock(false);
-                    gameGrid[firstcol + xOffset - 1][checkCol + yOffset].updateDebugText();
+
                 }
             }
         }
@@ -284,7 +285,7 @@ public class Game {
                 if (gameGrid[checkRow][checkCol].getFieldNodeColor().equals(Color.GRAY)) {
                     gameGrid[checkRow][checkCol].getFieldNode().setFill(Color.WHITE);
                     gameGrid[checkRow][checkCol].setContainsBlock(false);
-                    gameGrid[checkRow][checkCol].updateDebugText();
+
                 }
             }
         }
@@ -306,7 +307,7 @@ public class Game {
                     if (tetroGrid[row][col] == 1) {
                         gameGrid[row + xOffset][col + yOffset - 1].getFieldNode().setFill(color);
                         gameGrid[row + xOffset][col + yOffset - 1].setContainsBlock(true);
-                        gameGrid[row + xOffset][col + yOffset - 1].updateDebugText();
+
                     }
 
                     deleteLastBlock(hasMoved, yOffset, xOffset);
@@ -331,7 +332,7 @@ public class Game {
                     if (tetroGrid[row][col] == 1) {
                         gameGrid[row + xOffset][col + yOffset - 1].getFieldNode().setFill(color);
                         gameGrid[row + xOffset][col + yOffset - 1].setContainsBlock(true);
-                        gameGrid[row + xOffset][col + yOffset - 1].updateDebugText();
+
                     }
 
                     deleteLastBlock(hasMoved, yOffset, xOffset);
