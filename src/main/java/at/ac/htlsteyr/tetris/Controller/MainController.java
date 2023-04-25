@@ -151,6 +151,10 @@ public class MainController {
         timerHeader.setVisible(false);
     }
 
+    public void updateScoreLabel() {
+        score.setText(String.valueOf(Score.getScore()));
+    }
+
     public MainController() {
         instance = this;
     }
