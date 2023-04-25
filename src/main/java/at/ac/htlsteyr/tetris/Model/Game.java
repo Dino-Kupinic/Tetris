@@ -192,6 +192,7 @@ public class Game {
                             if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
                                 if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset != 0) {
                                     collisionCheck = true;
+                                    Score.increaseScoreOnCollision();
                                     stop();
                                     loopLimit = 0;
                                     collisionCheck = false;
