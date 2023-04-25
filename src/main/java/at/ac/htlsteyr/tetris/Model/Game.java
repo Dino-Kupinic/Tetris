@@ -152,12 +152,14 @@ public class Game {
                     }
 
                     if (Objects.equals(key, "ESCAPE")) {
+                        stop();
                         WindowManager windowManager = new WindowManager();
                         try {
                             windowManager.createNewWindow("Save Highscore", "highscore-view.fxml", 300, 200, Modality.APPLICATION_MODAL);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+
                     }
                 });
 
@@ -172,6 +174,8 @@ public class Game {
                     loopLimit++;
 
                     if (endOfGameGrid) {
+                        Score.increaseScoreOnCollision();
+                        MainController.getInstance().updateScoreLabel();
                         stop();
                         loopLimit = 0;
                         xOffset = 0;
@@ -193,6 +197,7 @@ public class Game {
                                 if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset != 0) {
                                     collisionCheck = true;
                                     Score.increaseScoreOnCollision();
+                                    MainController.getInstance().updateScoreLabel();
                                     stop();
                                     loopLimit = 0;
                                     collisionCheck = false;
