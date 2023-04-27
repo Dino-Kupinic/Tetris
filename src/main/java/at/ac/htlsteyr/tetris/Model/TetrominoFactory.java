@@ -20,6 +20,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TetrominoFactory {
+    /**
+     * checks what shape was chosen by the random generator then makes a
+     * new tetromino
+     * @param shape shape of the tetromino
+     * @return returns created tetromino
+     * @throws InvalidShapeException thrown when there is no shape like wanted
+     */
     public Tetromino createTetromino(TetrominoShapes shape) throws InvalidShapeException {
         switch (shape) {
             case SHAPE_I -> {
