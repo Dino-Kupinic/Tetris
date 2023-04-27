@@ -177,7 +177,7 @@ public class Game {
              * This method checks, if a tetromino hits another on/drops onto one.
              * If that´s the case the animation timer is stopped and another tetromino
              * gets placed on the game-field
-             * @param tetroGrid
+             * @param tetroGrid the grid where the tetromino is shown
              */
             private void tetroCollision(int[][] tetroGrid) {
                 try {
@@ -228,11 +228,11 @@ public class Game {
      * This method is for the falling animation of every single tetromino, which
      * only places a block under the old ones and the old ones are then deleted
      *
-     * @param tetroGrid
-     * @param yOffset
-     * @param color
-     * @param hasMoved
-     * @param xOffset
+     * @param tetroGrid the grid where the tetromino is shown
+     * @param yOffset how many blocks the tetromino is away from the top border
+     * @param color color of the tetromino
+     * @param hasMoved movement check for the tetromino
+     * @param xOffset how many blocks the tetromino is away from the left border
      */
     public void tetroFall(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         // move tetro
@@ -265,9 +265,9 @@ public class Game {
      * If a tetromino is moved in any kind of direction this method is called.
      * It deletes the old blocks so the tetromino keeps its shape
      *
-     * @param hasMoved
-     * @param yOffset
-     * @param xOffset
+     * @param hasMoved movement check for the tetromino
+     * @param yOffset how many blocks the tetromino is away from the top border
+     * @param xOffset how many blocks the tetromino is away from the left border
      */
     private void deleteLastBlock(boolean hasMoved, int yOffset, int xOffset) {
         // if shape is I delete last block like this
@@ -310,11 +310,11 @@ public class Game {
      * difference is, that the new blocks are place on the right side
      * of the old ones
      *
-     * @param tetroGrid
-     * @param yOffset
-     * @param color
-     * @param hasMoved
-     * @param xOffset
+     * @param tetroGrid the grid where the tetromino is shown
+     * @param yOffset how many blocks the tetromino is away from the top border
+     * @param color color of the tetromino
+     * @param hasMoved movement check for the tetromino
+     * @param xOffset how many blocks the tetromino is away from the left border
      */
     public void moveRight(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         if (xOffset < 6 && yOffset <= 16 && !collisionCheck) {
@@ -347,11 +347,10 @@ public class Game {
      * difference is, that the new blocks are place on the left side
      * of the old ones
      *
-     * @param tetroGrid
-     * @param yOffset
-     * @param color
-     * @param hasMoved
-     * @param xOffset
+     * @param tetroGrid the grid where the tetromino is shown* @param yOffset how many blocks the tetromino is away from the top border
+     * @param color color of the tetromino
+     * @param hasMoved movement check for the tetromino
+     * @param xOffset how many blocks the tetromino is away from the left border
      */
     public void moveLeft(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         if (xOffset != 0 && yOffset <= 16 && !collisionCheck) {
