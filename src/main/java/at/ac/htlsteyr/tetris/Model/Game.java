@@ -33,30 +33,6 @@ public class Game {
         this.currentTetromino = null;
     }
 
-    public Field[][] getGameGrid() {
-        return gameGrid;
-    }
-
-    public void setGameGrid(Field[][] gameGrid) {
-        this.gameGrid = gameGrid;
-    }
-
-    public TetrominoFactory getTetroFactory() {
-        return tetroFactory;
-    }
-
-    public void setTetroFactory(TetrominoFactory tetroFactory) {
-        this.tetroFactory = tetroFactory;
-    }
-
-    public Tetromino getCurrentTetromino() {
-        return currentTetromino;
-    }
-
-    public void setCurrentTetromino(Tetromino currentTetromino) {
-        this.currentTetromino = currentTetromino;
-    }
-
     public int getxOffset() {
         return xOffset;
     }
@@ -69,10 +45,11 @@ public class Game {
         this.xOffset = xOffset;
     }
 
-    public void setyOffset(int yOffset) {
-        this.yOffset = yOffset;
-    }
 
+    /**
+     * THis method creates a random tetromino shap, which is placed on the
+     * field shortly after one is created
+     */
     public void createTetromino() {
         try {
             // generate random number
@@ -95,6 +72,9 @@ public class Game {
         }
     }
 
+    /**
+     * Starts the Gameloop and initialises the timer
+     */
     public void startGameLoop() {
         if (gamemode == Gamemode.TIMED) {
             Timer timer = new Timer();
@@ -110,10 +90,14 @@ public class Game {
             int count = 0;
             final int ticks = 30;
             int loopLimit = 0;
-            int tetroLength = 1;
             int rowOfChecking = 3;
 
 
+            /**
+             * This is the handle method for the game animationTimer, whenever the animation timer is
+             * startet this method is called
+             * @param l
+             */
             @Override
             public void handle(long l) {
                 assert currentTetromino != null;
@@ -189,12 +173,18 @@ public class Game {
                 }
             }
 
+            /**
+             * This method checks, if a tetromino hits another on/drops onto one.
+             * If that´s the case the animation timer is stopped and another tetromino
+             * gets placed on the game-field
+             * @param tetroGrid
+             */
             private void tetroCollision(int[][] tetroGrid) {
                 try {
                     for (int checkRowTetroGrid1 = 0; checkRowTetroGrid1 < tetroGrid.length; checkRowTetroGrid1++) {
                         for (int checkRowTetroGrid = 0; checkRowTetroGrid < tetroGrid.length; checkRowTetroGrid++) {
                             if (tetroGrid[checkRowTetroGrid][rowOfChecking] == 1) {
-                                if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset != 0) {
+                                if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length - 1].isContainsBlock() && yOffset != 0) {
                                     collisionCheck = true;
                                     Score.increaseScoreOnCollision();
                                     MainController.getInstance().updateScoreLabel();
@@ -208,7 +198,7 @@ public class Game {
                                     endOfGameGrid = false;
                                     createTetromino();
                                     start();
-                                } else if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length-1].isContainsBlock() && yOffset == 0) {
+                                } else if (gameGrid[checkRowTetroGrid + getxOffset()][getyOffset() + tetroGrid.length - 1].isContainsBlock() && yOffset == 0) {
                                     stop();
                                 }
                             } else {
@@ -234,6 +224,16 @@ public class Game {
     }
 
 
+    /**
+     * This method is for the falling animation of every single tetromino, which
+     * only places a block under the old ones and the old ones are then deleted
+     *
+     * @param tetroGrid
+     * @param yOffset
+     * @param color
+     * @param hasMoved
+     * @param xOffset
+     */
     public void tetroFall(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         // move tetro
         for (int row = 0; row < tetroGrid.length; row++) {
@@ -261,6 +261,14 @@ public class Game {
         }
     }
 
+    /**
+     * If a tetromino is moved in any kind of direction this method is called.
+     * It deletes the old blocks so the tetromino keeps its shape
+     *
+     * @param hasMoved
+     * @param yOffset
+     * @param xOffset
+     */
     private void deleteLastBlock(boolean hasMoved, int yOffset, int xOffset) {
         // if shape is I delete last block like this
         if (currentTetromino.getShape().equals(TetrominoShapes.SHAPE_I)) {
@@ -297,6 +305,17 @@ public class Game {
         }
     }
 
+    /**
+     * This method is almost the same as the tetrofall-Method. The only
+     * difference is, that the new blocks are place on the right side
+     * of the old ones
+     *
+     * @param tetroGrid
+     * @param yOffset
+     * @param color
+     * @param hasMoved
+     * @param xOffset
+     */
     public void moveRight(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         if (xOffset < 6 && yOffset <= 16 && !collisionCheck) {
             xOffset++;
@@ -323,6 +342,17 @@ public class Game {
         }
     }
 
+    /**
+     * This method is almost the same as the tetrofall-Method. The only
+     * difference is, that the new blocks are place on the left side
+     * of the old ones
+     *
+     * @param tetroGrid
+     * @param yOffset
+     * @param color
+     * @param hasMoved
+     * @param xOffset
+     */
     public void moveLeft(int[][] tetroGrid, int yOffset, Color color, boolean hasMoved, int xOffset) {
         if (xOffset != 0 && yOffset <= 16 && !collisionCheck) {
             xOffset--;
