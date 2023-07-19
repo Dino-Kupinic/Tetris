@@ -1,5 +1,7 @@
 # Tetris
 
+DISCLAIMER: This project is incomplete and has been archived.
+
 Made by:
 - Dino Kupinic
 - Samed Karaman
